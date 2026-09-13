@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Home')
 @section('content')
-<p class="px-4 pt-4">Selamat datang di ruang belajar mahasiswa Informatika ITS. <a href="{{ route('student', ['nrp' => $profile['nrp']]) }}">Kenali profil akademisku ↗</a></p>
 <section class="hero" aria-labelledby="hero-heading">
     <div class="hero-copy">
         <p class="eyebrow"><span class="status-dot"></span> Informatics student · ITS</p>
