@@ -21,7 +21,7 @@ return [
     ],
     'highlights' => ['Top 3 Semifinalist RISTEK Datathon 2026', 'Pendanaan PKM 2026 untuk MelanoSense, sistem dermatoskopi berbantuan AI', 'Pendanaan IYT 2026 untuk AmbiSync, platform produktivitas dan manajemen kompetisi'],
     'skills' => 'Python, C/C++, SQL, PHP, JavaScript, Next.js, Tailwind CSS, Git, MySQL, PostgreSQL, Linux, Figma, machine learning, dan analisis data.',
-    'brand' => 'PARDOFELIS',
+    'brand' => 'K',
     'location' => 'Surabaya, Indonesia',
     'email' => 'nonamexz1728@gmail.com',
     'phone' => '082142560082',

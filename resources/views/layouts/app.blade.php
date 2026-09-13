@@ -18,7 +18,7 @@
 <div class="reading-progress" aria-hidden="true"></div>
 <div class="site-frame">
     <header class="site-header">
-        <a class="brand" href="{{ route('home') }}" aria-label="Pardofelis, beranda">{{ $profile['brand'] }}<span class="brand-star" aria-hidden="true">✳</span></a>
+        <a class="brand" href="{{ route('home') }}" aria-label="Kamal, beranda"><span class="brand-monogram" aria-hidden="true">{{ $profile['brand'] }}</span></a>
         <span class="header-rule" aria-hidden="true"></span>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">☰</span></button>
         <nav class="main-nav" id="main-nav" aria-label="Navigasi utama">

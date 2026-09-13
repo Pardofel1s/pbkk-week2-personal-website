@@ -48,7 +48,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible { 
 ::selection { background: #376942; color: white; }
 .site-frame { max-width: 1700px; margin: 0 auto; overflow: clip; background: var(--surface-low); border: 1px solid rgba(168,56,42,.15); }
 .site-header { position: relative; z-index: 5; display: flex; align-items: center; gap: 1.8rem; padding: 2rem 3.3rem; background: transparent; }
-.brand { display: inline-flex; align-items: center; justify-content: center; gap: 1.25rem; background: var(--coral); color: #410000; padding: .8rem 1.3rem; border-radius: 999px; font: 700 .82rem var(--sans); letter-spacing: .08em; box-shadow: 0 8px 25px #ff786538; white-space: nowrap; }
+.brand { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: 58px; height: 58px; padding: 0; border: 1px solid #a8382a33; border-radius: 50%; background: linear-gradient(145deg, #ffd5bd, var(--coral)); color: #572619; box-shadow: inset 0 0 0 4px #fff8f240, 0 5px 16px #ff786522; text-decoration: none; transition: transform .25s ease, box-shadow .25s ease; }
+.brand-monogram { font: italic 500 2.5rem/1 var(--serif); letter-spacing: -.08em; padding-right: .12em; transform: translateY(-2px); }
+.brand:hover { color: #572619; transform: rotate(-5deg); box-shadow: inset 0 0 0 4px #fff8f260, 0 7px 20px #ff786535; }
 .brand-star { font-size: 1.3rem; line-height: 1; }
 .header-rule { height: 1px; background: #a8382a55; flex: 1; min-width: 20px; }
 .main-nav { display: flex; align-items: center; gap: 1.45rem; }
@@ -315,7 +317,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible { 
 @media (max-width: 767px) {
   body { padding: .7rem; }
   .site-header { padding: 1.2rem; }
-  .brand { font-size: .7rem; padding: .75rem 1rem; gap: .75rem; }
+  .brand { width: 48px; height: 48px; }
+  .brand-monogram { font-size: 2.1rem; }
   .brand-star { font-size: 1.1rem; }
   .main-nav { gap: .5rem; align-items: stretch; }
   .main-nav > a { width: calc(50% - .25rem); font-size: .72rem; padding: .65rem; }
