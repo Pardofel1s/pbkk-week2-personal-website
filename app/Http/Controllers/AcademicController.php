@@ -20,7 +20,7 @@ class AcademicController extends Controller
     {
         abort_unless($nrp === config('portfolio.nrp'), 404);
 
-        return $this->page(config('portfolio.name'), 'Mahasiswa S1 Teknik Informatika, Institut Teknologi Sepuluh Nopember. Angkatan 2024. Melalui PBKK, saya mempelajari routing, controller, dan pengembangan aplikasi menggunakan Laravel.', ['showProfile' => true]);
+        return $this->page(config('portfolio.name'), config('portfolio.bio'), ['showProfile' => true]);
     }
 
     public function agent(string $tema = 'General Assistant Agent')

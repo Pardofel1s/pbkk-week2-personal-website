@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#fba28c">
     <meta name="description" content="Personal website Kamal Zaky Adinata. Profil mahasiswa Informatika ITS, eksperimen visual, proyek, dan catatan belajar.">
-    <title>@yield('title', 'Home') â€” {{ $profile['short_name'] }}</title>
+    <title>@yield('title', 'Home') — {{ $profile['short_name'] }}</title>
     <link rel="icon" href="{{ asset('images/favicon.svg') }}" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,22 +21,22 @@
 <div class="reading-progress" aria-hidden="true"></div>
 <div class="site-frame">
     <header class="site-header">
-        <a class="brand" href="{{ route('home') }}" aria-label="Pardofelis, beranda">{{ $profile['brand'] }}<span class="brand-star" aria-hidden="true">âœ³</span></a>
+        <a class="brand" href="{{ route('home') }}" aria-label="Pardofelis, beranda">{{ $profile['brand'] }}<span class="brand-star" aria-hidden="true">✳</span></a>
         <span class="header-rule" aria-hidden="true"></span>
-        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">â˜°</span></button>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">☰</span></button>
         <nav class="main-nav" id="main-nav" aria-label="Navigasi utama">
             @foreach (['home' => 'Home', 'dashboard.index' => 'Academic', 'about' => 'About', 'projects' => 'Projects', 'collection' => 'Collection', 'blog' => 'Blog', 'calculator' => 'Kalkulator'] as $route => $label)
                 <a href="{{ route($route) }}" @if(request()->routeIs($route) || ($route === 'projects' && request()->routeIs('project')) || ($route === 'blog' && request()->routeIs('article')) || ($route === 'calculator' && request()->routeIs('calculate'))) aria-current="page" @endif>{{ $label }}</a>
             @endforeach
-            <a class="contact-link" href="{{ route('contact') }}" @if(request()->routeIs('contact')) aria-current="page" @endif>Contact <span aria-hidden="true">â†—</span></a>
+            <a class="contact-link" href="{{ route('contact') }}" @if(request()->routeIs('contact')) aria-current="page" @endif>Contact <span aria-hidden="true">↗</span></a>
         </nav>
     </header>
     <main id="main-content" tabindex="-1">@yield('content')</main>
     <footer class="site-footer">
-        <span>Â© {{ date('Y') }} {{ $profile['name'] }}</span>
-        <span class="footer-note">Made with curiosity. <span aria-hidden="true">âœ³</span></span>
+        <span>© {{ date('Y') }} {{ $profile['name'] }}</span>
+        <span class="footer-note">Made with curiosity. <span aria-hidden="true">✳</span></span>
         <button class="motion-toggle" data-motion-toggle type="button" aria-pressed="true" hidden>Animations: on</button>
-        <a href="{{ route('project') }}">Project idea <span aria-hidden="true">â†—</span></a>
+        <a href="{{ route('project') }}">Project idea <span aria-hidden="true">↗</span></a>
     </footer>
 </div>
 </body>
