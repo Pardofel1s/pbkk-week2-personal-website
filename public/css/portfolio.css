@@ -42,7 +42,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible { 
 .skip-link:focus { top: 10px; }
 .eyebrow { font: 700 .71rem/1.6 var(--sans); letter-spacing: .16em; text-transform: uppercase; margin-bottom: 1.4rem; }
 .status-dot { display: inline-block; width: 7px; height: 7px; background: var(--sage-dark); border-radius: 50%; margin-right: .65rem; vertical-align: middle; }
-.pill-button { display: inline-flex; align-items: center; justify-content: center; gap: 2rem; min-height: 48px; padding: .95rem 1.55rem; border: 0; border-radius: 999px; background: var(--sage-dark); color: white; font-size: .8rem; font-weight: 700; letter-spacing: .03em; transition: background .2s, transform .2s; }
+.pill-button { display: inline-flex; align-items: center; justify-content: center; gap: 2rem; min-height: 48px; padding: .95rem 1.55rem; border: 0; border-radius: 999px; background: var(--sage-dark); color: white; font: 700 .8rem/1.5 var(--sans); letter-spacing: .03em; transition: background .2s, transform .2s; }
 .pill-button:hover { color: white; background: #254e2e; transform: translateY(-2px); }
 .text-link { display: inline-flex; align-items: center; gap: 1.1rem; padding: .35rem 0; border: 0; border-bottom: 1px solid currentColor; background: none; font-size: .82rem; font-weight: 600; }
 .is-home .site-frame { background: radial-gradient(ellipse at 87% 2%, #c3cdb08c, transparent 20%), radial-gradient(ellipse at 10% 3%, #ffe0ba, transparent 19%), linear-gradient(#f8c4ad 0, #f6b2a0 880px, var(--surface-low) 1100px); }
