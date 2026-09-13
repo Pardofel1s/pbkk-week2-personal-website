@@ -15,7 +15,7 @@ php artisan key:generate
 php artisan serve --port=8002
 ```
 
-Salin `.env` hanya pada instalasi pertama. Buka http://127.0.0.1:8002. Session dan cache memakai file; tidak perlu database atau npm build untuk halaman portfolio ini. Font dan Bootstrap memerlukan internet.
+Salin `.env` hanya pada instalasi pertama. Buka http://127.0.0.1:8002. Session dan cache memakai file; tidak perlu database atau npm build untuk halaman portfolio ini. Font Manrope dan Playfair Display disimpan lokal (lisensi ada di public/fonts). Bootstrap masih menggunakan CDN dan memerlukan internet.
 
 ## Routes Week 2
 

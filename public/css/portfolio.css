@@ -1,3 +1,25 @@
+/* Self-hosted fonts: Fontsource variable packages 5.2.8, SIL Open Font License. */
+@font-face {
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 200 800;
+    font-display: swap;
+    src: url('../fonts/manrope-latin.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 400 900;
+    font-display: swap;
+    src: url('../fonts/playfair-latin.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Playfair Display';
+    font-style: italic;
+    font-weight: 400 900;
+    font-display: swap;
+    src: url('../fonts/playfair-latin-italic.woff2') format('woff2');
+}
 /* Warm Editorial Aura — shared design tokens from docs/design/DESIGN.md. */
 :root {
   --surface: #fff8f2; --surface-low: #f9f2ec; --ink: #2a1d1a;
