@@ -19,9 +19,9 @@ class PageController extends Controller
         return $this->page('about');
     }
 
-    public function project(): View
+    public function project(): RedirectResponse
     {
-        return $this->page('project');
+        return redirect()->route('agent', ['tema' => 'dast']);
     }
 
     public function projects(): View

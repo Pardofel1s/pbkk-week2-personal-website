@@ -18,7 +18,7 @@ class PortfolioTest extends TestCase
         return [
             ['/', '5025241153'],
             ['/about', 'Departemen Teknik Informatika'],
-            ['/project-idea', 'Usulan awal'],
+            ['/agent/dast', 'DAST'],
             ['/projects', 'Kalkulator dinamis'],
             ['/contact', 'nonamexz1728@gmail.com'],
             ['/collection', 'Playfair Display'],
