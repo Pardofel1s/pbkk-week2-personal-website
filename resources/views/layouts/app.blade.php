@@ -35,7 +35,6 @@
     <footer class="site-footer">
         <span>© {{ date('Y') }} {{ $profile['name'] }}</span>
         <span class="footer-note">Made with curiosity. <span aria-hidden="true">✳</span></span>
-        <button class="motion-toggle" data-motion-toggle type="button" aria-pressed="true" hidden>Animations: on</button>
         <a href="{{ route('project') }}">Project idea <span aria-hidden="true">↗</span></a>
     </footer>
 </div>

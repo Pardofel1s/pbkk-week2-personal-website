@@ -2,16 +2,12 @@
     const root = document.documentElement;
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
     const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
-    const toggle = document.querySelector('[data-motion-toggle]');
     const progress = document.querySelector('.reading-progress');
     const activeAnimations = new Set();
     const visited = new WeakSet();
     let observer;
     let enabled = false;
     let frame = 0;
-    let stored = 'on';
-    try { stored = localStorage.getItem('portfolio-motion') || 'on'; } catch { /* Storage is optional. */ }
-
     const animate = (element, keyframes, options = {}) => {
         if (!enabled || !element || typeof element.animate !== 'function') return;
         const animation = element.animate(keyframes, { duration: 650, easing: 'cubic-bezier(.2,.7,.2,1)', ...options });
@@ -35,13 +31,8 @@
         if (enabled && !frame) frame = requestAnimationFrame(updateProgress);
     };
     const configure = () => {
-        enabled = stored !== 'off' && !preference.matches;
+        enabled = !preference.matches;
         root.classList.toggle('motion-on', enabled);
-        toggle.hidden = false;
-        toggle.disabled = preference.matches;
-        toggle.setAttribute('aria-pressed', String(enabled));
-        toggle.textContent = preference.matches ? 'Reduced motion' : 'Animations: ' + (enabled ? 'on' : 'off');
-        toggle.title = preference.matches ? 'Mengikuti pengaturan reduced motion perangkat.' : 'Aktifkan atau hentikan animasi website.';
         observer?.disconnect();
         if (!enabled) {
             activeAnimations.forEach(animation => animation.cancel());
@@ -65,11 +56,6 @@
         }
     };
 
-    toggle?.addEventListener('click', () => {
-        stored = enabled ? 'off' : 'on';
-        try { localStorage.setItem('portfolio-motion', stored); } catch { /* In-memory preference still works. */ }
-        configure();
-    });
     preference.addEventListener('change', configure);
     configure();
     document.querySelectorAll('.hero-copy > *, .page-heading > *, .article-page header > *').forEach((element, index) => reveal(element, index));
