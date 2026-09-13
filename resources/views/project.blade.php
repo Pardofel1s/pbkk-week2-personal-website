@@ -1,0 +1,10 @@
+@extends('layouts.app')
+@section('title', 'Project Idea')
+@section('content')
+<section class="page-content">
+    <div class="page-heading"><p class="eyebrow">THE NEXT CHAPTER / PROJECT IDEA</p><h1>Understand the problem.<br><em>Then take a step.</em></h1><p>Database Health Checker &amp; Performance Monitor</p><span class="status-badge">Usulan awal · belum disepakati kelompok</span></div>
+    <div class="idea-overview"><div><p class="eyebrow">THE CONCEPT</p><h2>A clearer view<br>of database health.</h2><p>Asisten yang membantu pengembang memahami kondisi database pengujian: memeriksa koneksi, membaca metrik yang diizinkan, lalu merangkum masalah dan saran pemeriksaan berikutnya.</p><p>Konsep ini adalah bahan diskusi proyek akhir. Fitur AI belum diimplementasikan pada personal website ini.</p></div><div class="agent-flow" aria-label="Alur usulan agent"><div><span>01</span><strong>Ask</strong><p>Pengguna menjelaskan pemeriksaan yang dibutuhkan.</p></div><span class="flow-arrow" aria-hidden="true">↓</span><div><span>02</span><strong>Inspect</strong><p>Agent memilih tool baca yang sudah diizinkan.</p></div><span class="flow-arrow" aria-hidden="true">↓</span><div><span>03</span><strong>Explain</strong><p>Hasil tool dirangkum dengan temuan dan batasannya.</p></div></div></div>
+    <div class="concept-grid"><article><p class="eyebrow">01 / USER</p><h3>Developer &amp; mahasiswa</h3><p>Membantu saat memeriksa database lokal atau lingkungan pengujian yang dimiliki sendiri.</p></article><article><p class="eyebrow">02 / PROPOSED STACK</p><h3>Laravel, Livewire, LLM</h3><p>Backend Laravel, UI Livewire, integrasi Ollama atau API yang tersedia, serta pengemasan NativePHP.</p></article><article><p class="eyebrow">03 / BOUNDARIES</p><h3>Read first. Explain clearly.</h3><p>Kredensial dibatasi untuk baca, tool di-whitelist, dan tidak ada perubahan atau penghapusan data otomatis.</p></article></div>
+    <a class="text-link" href="{{ route('projects') }}">← Back to projects</a>
+</section>
+@endsection
