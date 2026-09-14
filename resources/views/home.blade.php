@@ -3,14 +3,14 @@
 @section('content')
 <section class="hero" aria-labelledby="hero-heading">
     <div class="hero-copy">
-        <p class="eyebrow"><span class="status-dot"></span> Informatics student · ITS</p>
+        <p class="eyebrow"><span class="status-dot"></span> Selamat datang · Informatika ITS</p>
         <h1 id="hero-heading">HELLO!<br>I’M <em>KAMAL.</em></h1>
         <p class="hero-intro">Exploring AI & cybersecurity.<br>Building with curiosity and purpose.</p>
         <p class="identity">{{ $profile['name'] }} <span>NRP {{ $profile['nrp'] }}</span></p>
         <a class="text-link" href="#playground">Come take a look around <span aria-hidden="true">↘</span></a>
     </div>
     <div class="hero-art">
-        <span class="art-caption">01 / A WORK IN CURIOSITY</span>
+        <span class="art-caption">01 / NOTES FROM A CURIOUS MIND</span>
         <div class="envelope" id="hero-envelope">
             <div class="paper paper-back"><span>KEEP<br>EXPLORING.</span><span class="paper-cross" aria-hidden="true">✳</span></div>
             <div class="paper paper-middle"><span class="paper-word">MAKE<br><em>something.</em></span><span class="paper-small">A SPACE FOR SMALL IDEAS</span></div>

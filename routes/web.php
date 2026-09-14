@@ -19,7 +19,7 @@ Route::get('/hitung/{angka1}/{angka2}/{operasi}', [PageController::class, 'hitun
 // Week 2: required and optional parameters, named routes, and grouped routes.
 Route::get('/mahasiswa/{nrp}', [AcademicController::class, 'profile'])->where('nrp', '[0-9]{10}')->name('student');
 Route::get('/agent/{tema?}', [AcademicController::class, 'agent'])->name('agent');
-Route::get('/hitung-ipk/{ip1}/{ip2}', [AcademicController::class, 'gpa'])->name('gpa.calculate');
+Route::get('/hitung-ipk/{ipk1}/{ipk2}', [AcademicController::class, 'gpa'])->name('gpa.calculate');
 Route::prefix('dashboard')->name('dashboard.')->controller(AcademicController::class)->group(function () {
     Route::get('/', 'dashboard')->name('index');
     Route::get('/mahasiswa/{nrp}', 'profile')->where('nrp', '[0-9]{10}')->name('student');

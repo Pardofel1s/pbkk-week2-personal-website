@@ -35,7 +35,7 @@ class AcademicTest extends TestCase
             $this->get('/hitung-ipk/'.$ip.'/3')->assertStatus(422);
         }
         $this->get('/dashboard/ipk')->assertOk();
-        $this->get('/dashboard/ipk/submit?ip1=3.5&ip2=4')->assertRedirect(route('gpa.calculate', ['ip1' => '3.5', 'ip2' => '4']));
-        $this->get('/dashboard/ipk/submit?ip1=5&ip2=3')->assertSessionHasErrors('ip1');
+        $this->get('/dashboard/ipk/submit?ipk1=3.5&ipk2=4')->assertRedirect(route('gpa.calculate', ['ipk1' => '3.5', 'ipk2' => '4']));
+        $this->get('/dashboard/ipk/submit?ipk1=5&ipk2=3')->assertSessionHasErrors('ipk1');
     }
 }

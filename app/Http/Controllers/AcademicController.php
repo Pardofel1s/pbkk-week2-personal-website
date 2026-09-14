@@ -41,21 +41,21 @@ class AcademicController extends Controller
 
     public function submit(Request $request)
     {
-        $data = $request->validate(['ip1' => 'required|numeric|between:0,4', 'ip2' => 'required|numeric|between:0,4']);
+        $data = $request->validate(['ipk1' => 'required|numeric|between:0,4', 'ipk2' => 'required|numeric|between:0,4']);
 
         return redirect()->route('gpa.calculate', $data);
     }
 
-    public function gpa(string $ip1, string $ip2)
+    public function gpa(string $ipk1, string $ipk2)
     {
-        foreach ([$ip1, $ip2] as $ip) {
+        foreach ([$ipk1, $ipk2] as $ip) {
             if (! preg_match('/^[0-9]+(?:\.[0-9]+)?$/D', $ip) || ! is_finite((float) $ip) || (float) $ip > 4) {
                 return response()->view('academic', ['profile' => config('portfolio'), 'title' => 'IP belum valid.', 'description' => 'Masukkan IP antara 0 dan 4. Gunakan titik untuk angka desimal.', 'showGpa' => true], 422);
             }
         }
-        $result = number_format(((float) $ip1 + (float) $ip2) / 2, 2, '.', '');
+        $result = number_format(((float) $ipk1 + (float) $ipk2) / 2, 2, '.', '');
 
-        return $this->page('Rata-rata IP: '.$result, "Semester pertama: {$ip1}. Semester kedua: {$ip2}. Hasil ini memakai bobot semester yang sama; IPK resmi mengikuti bobot SKS.", ['showGpa' => true]);
+        return $this->page('Rata-rata IP: '.$result, "Semester pertama: {$ipk1}. Semester kedua: {$ipk2}. Hasil ini memakai bobot semester yang sama; IPK resmi mengikuti bobot SKS.", ['showGpa' => true]);
     }
 
     public function missing()

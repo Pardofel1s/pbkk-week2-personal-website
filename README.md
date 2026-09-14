@@ -26,7 +26,7 @@ Semua route menggunakan GET dan named routes. Logika akademis ada pada `Academic
 | `/` | `PageController@index` | `home` | Sambutan dan profil singkat |
 | `/mahasiswa/{nrp}` | `profile` | `student` | Profil pemilik NRP, tepat 10 digit |
 | `/agent/{tema?}` | `agent` | `agent` | Tema opsional, default General Assistant Agent |
-| `/hitung-ipk/{ip1}/{ip2}` | `gpa` | `gpa.calculate` | Rata-rata dua IP, rentang 0–4 |
+| `/hitung-ipk/{ipk1}/{ipk2}` | `gpa` | `gpa.calculate` | Rata-rata dua IP, rentang 0–4 |
 | `/dashboard` | `dashboard` | `dashboard.index` | Navigasi akademis |
 | `/dashboard/mahasiswa/{nrp}` | `profile` | `dashboard.student` | Profil dalam prefix dashboard |
 | `/dashboard/agent/{tema?}` | `agent` | `dashboard.agent` | Tema AI dalam prefix dashboard |
@@ -57,3 +57,14 @@ php vendor/bin/pint --test app/Http/Controllers/AcademicController.php routes/we
 5. Tunjukkan route:list dan alur route → controller → Blade.
 
 Unggah tautan repository publik ke LMS paling lambat H-1 Pertemuan 3. `.env` dan `vendor/` tidak disertakan di Git.
+
+## Tampilan dan navigasi
+
+Mode terang/gelap tersedia dari tombol di header. Pilihan disimpan di browser; kunjungan pertama mengikuti tema perangkat. Dashboard menyediakan kartu untuk profil, ide DAST, dan kalkulator IPK. Sambutan ITS menyatu dengan hero Home. Animasi mengikuti preferensi reduced motion perangkat.
+
+## Checklist pengumpulan
+
+- Home, profil NRP wajib, tema AI opsional dengan default, dan kalkulator dua IP tersedia.
+- Regex NRP tepat 10 digit, prefix dashboard, fallback 404, dan named routes diterapkan.
+- Parameter kalkulator bernama ipk1 dan ipk2; URL contoh: /hitung-ipk/3.5/4.
+- Unggah link repository ini ke LMS dan persiapkan demo 5 menit sesuai panduan di atas.
