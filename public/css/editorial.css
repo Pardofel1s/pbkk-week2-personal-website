@@ -30,7 +30,7 @@ html[data-theme="dark"] { --surface: #101512; --surface-low: #171e19; --panel: #
 .form-control:focus,.form-select:focus { color: var(--ink); background-color: var(--panel); border-color: var(--coral-dark); box-shadow: 0 0 0 3px var(--accent-soft); }
 html[data-theme="dark"] .is-home .site-frame { background: radial-gradient(ellipse at 88% 8%,#425c4144,transparent 35%),radial-gradient(ellipse at 10% 10%,#674a3444,transparent 35%),var(--surface-low); }
 html[data-theme="dark"] .hero h1 em { color: #ecba96; }
-html[data-theme="dark"] .main-nav { background: var(--surface-low); }
+html[data-theme="dark"] .main-nav { background: transparent; }
 html[data-theme="dark"] .prose-block,html[data-theme="dark"] .prose-block p,html[data-theme="dark"] .page-heading p,html[data-theme="dark"] .section-heading p,html[data-theme="dark"] .showcase-card p,html[data-theme="dark"] .site-footer,html[data-theme="dark"] .project-card,html[data-theme="dark"] .blog-row { color: var(--ink); }
 html[data-theme="dark"] .calculator-form,html[data-theme="dark"] .calculator-result,html[data-theme="dark"] .concept-grid article,html[data-theme="dark"] .agent-flow > div,html[data-theme="dark"] .contact-details { background: var(--panel); color: var(--ink); border-color: var(--line); }
 html[data-theme="dark"] .contact-letter,html[data-theme="dark"] .academic-poster,html[data-theme="dark"] .project-preview,html[data-theme="dark"] .collection-visual,html[data-theme="dark"] .demo-demo { color: #2a1d1a; }
@@ -41,4 +41,7 @@ html[data-theme="dark"] input,html[data-theme="dark"] select,html[data-theme="da
 @media(max-width: 600px) { .site-frame { border-radius: 16px; } .profile-facts { grid-template-columns: 1fr; } .theme-toggle { padding: .4rem .65rem; } .academic-cards > a { padding: 1.5rem; } .academic-intro { font-size: .95rem; } }
 @media(prefers-reduced-motion: reduce) { .academic-cards > a { transition: none; } }
 
-@media(min-width: 1200px) { html[data-theme="dark"] .main-nav { background: transparent; } }
+html[data-theme="dark"] .is-inner .site-frame {
+    background: radial-gradient(ellipse at 85% 0%, #425c412e, transparent 35%),
+        radial-gradient(ellipse at 10% 0%, #674a3429, transparent 45%), var(--surface-low);
+}
