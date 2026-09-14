@@ -2,7 +2,7 @@
 
 NRP: **5025241153** · S1 Teknik Informatika ITS
 
-Profil akademis individu berbasis Laravel, dikembangkan dari `personal-website-complete` pada branch `import/website-sources` repository shzirley/pbkk-kelompok4 (snapshot af18555). Desain dan fitur personal dipertahankan. Commit pertama menyimpan source sebelum perubahan Week 2.
+Profil akademis individu berbasis Laravel untuk tugas PBKK Week 2. Aplikasi ini mempraktikkan alur request dari route ke controller lalu Blade view, dengan tampilan personal yang responsif, mode terang/gelap, dan interaksi animasi.
 
 ## Menjalankan
 
@@ -36,9 +36,9 @@ Semua route menggunakan GET dan named routes. Logika akademis ada pada `Academic
 
 Route portfolio lama tetap tersedia. `/project-idea` mengarahkan ke named route tema DAST. NRP valid yang bukan milik pemilik situs menghasilkan 404. Rata-rata IP memakai bobot semester sama, bukan penghitungan IPK resmi berbobot SKS.
 
-## Ide proyek
+## Ide Agentic AI
 
-Agentic AI untuk Dynamic Application Security Testing (DAST): memetakan halaman dan form, memilih pengujian berdasarkan respons HTTP, dan membuat laporan temuan serta saran perbaikan. Ini masih rancangan, dengan target pengujian lokal DVWA atau OWASP Juice Shop.
+Halaman Agent memperkenalkan gagasan sistem cerdas yang menggabungkan software engineering, AI/data, dan pengambilan keputusan. Tema dapat diberikan melalui parameter opsional, misalnya `/agent/dast`; implementasi agent belum menjadi bagian Week 2.
 
 ## Verifikasi
 
@@ -50,11 +50,11 @@ php vendor/bin/pint --test app/Http/Controllers/AcademicController.php routes/we
 
 ## Demo 5 menit
 
-1. Home dan profil: tunjukkan parameter NRP wajib serta regex 10 digit.
-2. Buka tema agent kosong dan tema DAST: jelaskan nilai default.
-3. Buka dashboard: tunjukkan prefix dan named routes pada navigasi.
-4. Hitung IP 3.5 dan 4; coba nilai salah serta halaman yang tidak tersedia.
-5. Tunjukkan route:list dan alur route → controller → Blade.
+1. Tunjukkan Home dan profil `/mahasiswa/5025241153`.
+2. Tunjukkan tema Agent dengan dan tanpa parameter.
+3. Hitung IP melalui `/hitung-ipk/3.5/4` dan uji input tidak valid.
+4. Tunjukkan NRP non-10-digit ditolak oleh regex dan URL asing menampilkan fallback 404.
+5. Tunjukkan `route:list` serta alur route → controller → Blade.
 
 Unggah tautan repository publik ke LMS paling lambat H-1 Pertemuan 3. `.env` dan `vendor/` tidak disertakan di Git.
 
