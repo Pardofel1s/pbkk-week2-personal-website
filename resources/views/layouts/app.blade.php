@@ -18,6 +18,7 @@
 <body class="{{ request()->routeIs('home') ? 'is-home' : 'is-inner' }}">
 <a class="skip-link" href="#main-content">Lewati ke konten</a>
 <div class="reading-progress" aria-hidden="true"></div>
+<div class="pointer-trail" aria-hidden="true"></div>
 <div class="site-frame">
     <header class="site-header">
         <a class="brand" href="{{ route('home') }}" aria-label="Kamal, beranda"><span class="brand-monogram" aria-hidden="true">{{ $profile['brand'] }}</span></a>

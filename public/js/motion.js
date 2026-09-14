@@ -2,11 +2,13 @@
     const root = document.documentElement;
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
     const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const trail = document.querySelector('.pointer-trail');
     const progress = document.querySelector('.reading-progress');
     const activeAnimations = new Set();
     const visited = new WeakSet();
     let observer;
     let enabled = false;
+    let trailTick = 0;
     let frame = 0;
     const animate = (element, keyframes, options = {}) => {
         if (!enabled || !element || typeof element.animate !== 'function') return;
@@ -58,6 +60,20 @@
 
     preference.addEventListener('change', configure);
     configure();
+    if (trail && finePointer.matches) {
+        document.addEventListener('pointermove', event => {
+            if (!enabled || event.pointerType === 'touch' || trailTick) return;
+            trailTick = requestAnimationFrame(() => {
+                trailTick = 0;
+                const spark = document.createElement('i');
+                spark.className = 'pointer-spark';
+                spark.style.left = event.clientX + 'px';
+                spark.style.top = event.clientY + 'px';
+                trail.append(spark);
+                spark.addEventListener('animationend', () => spark.remove(), { once: true });
+            });
+        }, { passive: true });
+    }
     document.querySelectorAll('.hero-copy > *, .page-heading > *, .article-page header > *').forEach((element, index) => reveal(element, index));
     animate(document.querySelector('.header-rule'), [{ transform: 'scaleX(0)', transformOrigin: 'left' }, { transform: 'scaleX(1)', transformOrigin: 'left' }], { duration: 1000 });
     animate(document.querySelector('.result-number'), [{ opacity: 0, transform: 'translateY(15px) scale(.94)' }, { opacity: 1, transform: 'translateY(0) scale(1)' }], { duration: 750 });

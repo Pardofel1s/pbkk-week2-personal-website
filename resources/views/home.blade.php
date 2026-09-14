@@ -5,7 +5,7 @@
     <div class="hero-copy">
         <p class="eyebrow"><span class="status-dot"></span> Selamat datang · Informatika ITS</p>
         <h1 id="hero-heading">HELLO!<br>I’M <em>KAMAL.</em></h1>
-        <p class="hero-intro">Exploring AI & cybersecurity.<br>Building with curiosity and purpose.</p>
+        <p class="hero-intro">Building intelligent systems.<br>Where software, data, and decisions meet.</p>
         <p class="identity">{{ $profile['name'] }} <span>NRP {{ $profile['nrp'] }}</span></p>
         <a class="text-link" href="#playground">Come take a look around <span aria-hidden="true">↘</span></a>
     </div>
@@ -14,7 +14,7 @@
         <div class="envelope" id="hero-envelope">
             <button class="paper paper-back" type="button" data-card-reveal="explore" aria-label="Buka kartu Keep Exploring" aria-expanded="false"><span>KEEP<br>EXPLORING.</span><span class="paper-cross" aria-hidden="true">✳</span><span class="card-message">Aku selalu ingin tahu dan terus belajar dari setiap hal baru.</span></button>
             <button class="paper paper-middle" type="button" data-card-reveal="create" aria-label="Buka kartu Make Something" aria-expanded="false"><span class="paper-word">MAKE<br><em>something.</em></span><span class="paper-small">A SPACE FOR SMALL IDEAS</span><span class="card-message">Untuk Angela Vania Sugiyono — terima kasih sudah menjadi rumah paling hangat di setiap langkahku. Kamu membuat hari-hari sederhana terasa istimewa. Dengan sayang, Kamal.</span></button>
-            <button class="paper paper-front" type="button" data-card-reveal="front" aria-label="Buka detail kartu perkenalan" aria-expanded="false"><span class="welcome-kicker">HELLO, I’M</span><span class="welcome-name">Kamal.</span><span class="welcome-detail">Mahasiswa Informatika ITS · AI & cybersecurity</span><span class="card-message">Mahasiswa Teknik Informatika ITS angkatan 2024, tertarik pada AI, cybersecurity, dan software engineering.</span></button>
+            <button class="paper paper-front" type="button" data-card-reveal="front" aria-label="Buka detail kartu perkenalan" aria-expanded="false"><span class="welcome-kicker">HELLO, I’M</span><span class="welcome-name">Kamal.</span><span class="welcome-detail">Informatics student · intelligent systems & decision science</span><span class="card-message">Mahasiswa Teknik Informatika ITS yang tertarik pada software engineering, AI/data, networking, optimisasi, dan sistem cerdas.</span></button>
             <div class="envelope-pocket"><span>SELAMAT DATANG DI RUANG KECILKU</span></div>
             <div class="card-detail" aria-hidden="true"><span class="card-detail-mark">K.</span><p data-card-detail-text>Tempat aku belajar, bereksperimen, dan membangun sesuatu dengan rasa ingin tahu.</p><span class="card-detail-meta" data-card-detail-meta>5025241153 · Surabaya, ID</span></div>
             <button class="envelope-toggle" type="button" aria-label="Buka kartu showcase" aria-expanded="false" aria-controls="hero-envelope"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M10 6 26 16 10 26Z"/></svg></button>

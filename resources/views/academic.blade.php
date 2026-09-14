@@ -7,7 +7,7 @@
     @if(request()->routeIs('dashboard.index'))
     <div class="academic-cards">
         <a href="{{ route('dashboard.student', ['nrp' => $profile['nrp']]) }}"><span class="eyebrow">01 / THE PERSON</span><h2>Profil &<br><em>perjalanan.</em></h2><p>Pendidikan, riset, dan hal-hal yang saya bangun.</p><span>Kenali Kamal ↗</span></a>
-        <a href="{{ route('dashboard.agent', ['tema' => 'dast']) }}"><span class="eyebrow">02 / THE IDEA</span><h2>Curiosity meets<br><em>security.</em></h2><p>Rancangan Agentic AI untuk pengujian keamanan web.</p><span>Jelajahi DAST ↗</span></a>
+        <a href="{{ route('dashboard.agent', ['tema' => 'dast']) }}"><span class="eyebrow">02 / THE IDEA</span><h2>Systems meet<br><em>curiosity.</em></h2><p>Eksplorasi Agentic AI untuk sistem yang bisa memahami konteks dan memilih aksi\.</p><span>Jelajahi DAST ↗</span></a>
         <a href="{{ route('dashboard.gpa') }}"><span class="eyebrow">03 / THE NUMBERS</span><h2>A little<br><em>reflection.</em></h2><p>Hitung rata-rata IP dan lihat perjalanan akademismu.</p><span>Buka kalkulator IPK ↗</span></a>
     </div>
     @endif
