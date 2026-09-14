@@ -20,26 +20,32 @@ document.addEventListener('keydown', (event) => {
 nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
 
 const envelopeToggle = document.querySelector('.envelope-toggle');
-const cardReveal = document.querySelector('[data-card-reveal]');
+const cardReveals = document.querySelectorAll('[data-card-reveal]');
 envelopeToggle?.addEventListener('click', () => {
     const envelope = document.querySelector('.envelope');
     const open = envelope.classList.toggle('is-open');
     if (!open) {
         envelope.classList.remove('card-revealed');
-        cardReveal?.setAttribute('aria-expanded', 'false');
+        cardReveals.forEach(card => card.setAttribute('aria-expanded', 'false'));
         document.querySelector('.card-detail')?.setAttribute('aria-hidden', 'true');
     }
     envelopeToggle.setAttribute('aria-expanded', String(open));
     envelopeToggle.setAttribute('aria-label', open ? 'Tutup holder kartu' : 'Buka holder kartu');
 });
-cardReveal?.addEventListener('click', () => {
+cardReveals.forEach(cardReveal => cardReveal.addEventListener('click', () => {
     const envelope = document.querySelector('.envelope');
     if (!envelope.classList.contains('is-open')) return;
-    const revealed = envelope.classList.toggle('card-revealed');
-    cardReveal.setAttribute('aria-expanded', String(revealed));
+    const key = cardReveal.dataset.cardReveal;
+    const revealed = envelope.classList.contains('card-revealed') && envelope.classList.contains('card-' + key) ? false : true;
+    envelope.classList.remove('card-explore', 'card-create', 'card-front');
+    envelope.classList.toggle('card-revealed', revealed);
+    if (revealed) envelope.classList.add('card-' + key);
+    cardReveals.forEach(card => card.setAttribute('aria-expanded', String(revealed && card === cardReveal)));
+    const text = { explore: 'Tetap ingin tahu: aku menikmati proses memahami hal baru, dari riset sampai eksperimen kecil.', create: 'Aku suka mengubah ide menjadi sesuatu yang bisa dicoba, dibagikan, dan dikembangkan bersama.', front: 'Tempat aku belajar, bereksperimen, dan membangun sesuatu dengan rasa ingin tahu.' }[key];
+    document.querySelector('[data-card-detail-text]').textContent = text;
     document.querySelector('.card-detail')?.setAttribute('aria-hidden', String(!revealed));
     cardReveal.setAttribute('aria-label', revealed ? 'Tutup detail kartu' : 'Buka detail kartu perkenalan');
-});
+}));
 document.querySelector('[data-stack-toggle]')?.addEventListener('click', (event) => {
     const button = event.currentTarget;
     const spread = button.closest('.demo-stack').classList.toggle('is-spread');
