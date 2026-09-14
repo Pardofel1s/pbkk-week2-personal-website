@@ -20,11 +20,25 @@ document.addEventListener('keydown', (event) => {
 nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
 
 const envelopeToggle = document.querySelector('.envelope-toggle');
+const cardReveal = document.querySelector('[data-card-reveal]');
 envelopeToggle?.addEventListener('click', () => {
-    const open = document.querySelector('.envelope').classList.toggle('is-open');
+    const envelope = document.querySelector('.envelope');
+    const open = envelope.classList.toggle('is-open');
+    if (!open) {
+        envelope.classList.remove('card-revealed');
+        cardReveal?.setAttribute('aria-expanded', 'false');
+        document.querySelector('.card-detail')?.setAttribute('aria-hidden', 'true');
+    }
     envelopeToggle.setAttribute('aria-expanded', String(open));
-    envelopeToggle.setAttribute('aria-label', open ? 'Tutup kartu perkenalan' : 'Buka kartu perkenalan');
-    document.querySelector('.card-detail')?.setAttribute('aria-hidden', String(!open));
+    envelopeToggle.setAttribute('aria-label', open ? 'Tutup holder kartu' : 'Buka holder kartu');
+});
+cardReveal?.addEventListener('click', () => {
+    const envelope = document.querySelector('.envelope');
+    if (!envelope.classList.contains('is-open')) return;
+    const revealed = envelope.classList.toggle('card-revealed');
+    cardReveal.setAttribute('aria-expanded', String(revealed));
+    document.querySelector('.card-detail')?.setAttribute('aria-hidden', String(!revealed));
+    cardReveal.setAttribute('aria-label', revealed ? 'Tutup detail kartu' : 'Buka detail kartu perkenalan');
 });
 document.querySelector('[data-stack-toggle]')?.addEventListener('click', (event) => {
     const button = event.currentTarget;
