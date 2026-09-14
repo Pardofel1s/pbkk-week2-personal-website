@@ -23,7 +23,8 @@ const envelopeToggle = document.querySelector('.envelope-toggle');
 envelopeToggle?.addEventListener('click', () => {
     const open = document.querySelector('.envelope').classList.toggle('is-open');
     envelopeToggle.setAttribute('aria-expanded', String(open));
-    envelopeToggle.setAttribute('aria-label', open ? 'Tutup kartu showcase' : 'Buka kartu showcase');
+    envelopeToggle.setAttribute('aria-label', open ? 'Tutup kartu perkenalan' : 'Buka kartu perkenalan');
+    document.querySelector('.card-detail')?.setAttribute('aria-hidden', String(!open));
 });
 document.querySelector('[data-stack-toggle]')?.addEventListener('click', (event) => {
     const button = event.currentTarget;

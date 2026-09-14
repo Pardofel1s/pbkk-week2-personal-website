@@ -12,11 +12,17 @@
     <div class="hero-art">
         <span class="art-caption">01 / NOTES FROM A CURIOUS MIND</span>
         <div class="envelope" id="hero-envelope">
-            <div class="paper paper-back"><span>KEEP<br>EXPLORING.</span><span class="paper-cross" aria-hidden="true">✳</span></div>
-            <div class="paper paper-middle"><span class="paper-word">MAKE<br><em>something.</em></span><span class="paper-small">A SPACE FOR SMALL IDEAS</span></div>
-            <div class="paper paper-front"><span class="paper-number">K.</span><span class="paper-small">DESIGN · CODE · REPEAT</span></div>
-            <div class="envelope-pocket"><span>A FEW THINGS ABOUT ME</span></div>
-            <button class="envelope-toggle" type="button" aria-label="Buka kartu showcase" aria-expanded="false" aria-controls="hero-envelope"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M10 6 26 16 10 26Z"/></svg></button>
+            <div class="paper paper-front">
+                <span class="welcome-kicker">HELLO, I’M</span>
+                <span class="welcome-name">Kamal.</span>
+                <span class="welcome-detail">Mahasiswa Informatika ITS · explorer of AI & cybersecurity</span>
+            </div>
+            <div class="card-detail" aria-hidden="true">
+                <span class="card-detail-mark">K.</span>
+                <p>Selamat datang di ruang kecilku—tempat aku belajar, bereksperimen, dan membangun sesuatu dengan rasa ingin tahu.</p>
+                <span class="card-detail-meta">5025241153 · Surabaya, ID</span>
+            </div>
+            <button class="envelope-toggle" type="button" aria-label="Buka kartu perkenalan" aria-expanded="false" aria-controls="hero-envelope"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M10 6 26 16 10 26Z"/></svg></button>
         </div>
         <span class="art-footnote">An idea is a good place to start.</span>
     </div>
