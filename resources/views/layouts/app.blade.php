@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ asset('css/editorial.css') }}?v={{ filemtime(public_path('css/editorial.css')) }}">
     <script src="{{ asset('js/portfolio.js') }}" defer></script>
     <script src="{{ asset('js/motion.js') }}" defer></script>
+    <script src="{{ asset('js/music.js') }}" defer></script>
 </head>
 <body class="{{ request()->routeIs('home') ? 'is-home' : 'is-inner' }}">
 <a class="skip-link" href="#main-content">Lewati ke konten</a>
@@ -21,7 +22,7 @@
 <div class="pointer-trail" aria-hidden="true"></div>
 <div class="site-frame">
     <header class="site-header">
-        <a class="brand" href="{{ route('home') }}" aria-label="Kamal, beranda"><span class="brand-monogram" aria-hidden="true">{{ $profile['brand'] }}</span></a>
+        <div class="brand-player" data-music-player><button class="brand" type="button" aria-label="Buka pemutar musik" aria-expanded="false" aria-controls="music-popover"><span class="brand-monogram" aria-hidden="true">{{ $profile['brand'] }}</span></button><div class="music-popover" id="music-popover" hidden><div class="music-meta"><strong>Everything Goes On</strong><span>Porter Robinson</span></div><input class="music-progress" type="range" min="0" max="100" value="0" aria-label="Progress lagu"><div class="music-actions"><button type="button" data-music-toggle>Play</button><a href="{{ route('home') }}">Back to Home</a></div><audio data-music-audio preload="metadata" src="{{ asset('audio/everything-goes-on.mp3') }}"></audio></div></div>
         <span class="header-rule" aria-hidden="true"></span>
         <button class="theme-toggle" type="button" aria-label="Aktifkan mode gelap" aria-pressed="false"><span data-theme-icon aria-hidden="true">◐</span><span data-theme-label>Gelap</span></button>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">☰</span></button>
