@@ -8,7 +8,17 @@
             <p class="eyebrow">YOUR NUMBERS</p>
             @if($errors->any())<div class="error-message" role="alert">Lengkapi kedua angka dan pilih operasi yang tersedia.</div>@endif
             <label for="angka1">Angka pertama</label><input class="number-input" type="text" inputmode="decimal" id="angka1" name="angka1" value="{{ old('angka1', $angka1) }}" placeholder="Contoh: 10" maxlength="32" required aria-describedby="number-help">
-            <label for="operasi">Operasi</label><select id="operasi" name="operasi">@foreach(['tambah' => '+  Tambah', 'kurang' => '−  Kurang', 'kali' => '×  Kali', 'bagi' => '÷  Bagi'] as $key => $label)<option value="{{ $key }}" @selected(old('operasi', $operasi) === $key)>{{ $label }}</option>@endforeach</select>
+            <fieldset class="operation-picker">
+                <legend>Pilih operasi</legend>
+                <div class="operation-options">
+                @foreach(['tambah' => ['+', 'Tambah'], 'kurang' => ['−', 'Kurang'], 'kali' => ['×', 'Kali'], 'bagi' => ['÷', 'Bagi']] as $key => [$symbol, $label])
+                    <label class="operation-choice">
+                        <input type="radio" name="operasi" value="{{ $key }}" @checked(old('operasi', $operasi) === $key) required>
+                        <span class="operation-tile"><span class="operation-symbol" aria-hidden="true">{{ $symbol }}</span><span>{{ $label }}</span></span>
+                    </label>
+                @endforeach
+                </div>
+            </fieldset>
             <label for="angka2">Angka kedua</label><input class="number-input" type="text" inputmode="decimal" id="angka2" name="angka2" value="{{ old('angka2', $angka2) }}" placeholder="Contoh: 5" maxlength="32" required aria-describedby="number-help">
             <p id="number-help" class="field-help">Angka negatif dan desimal diperbolehkan. Gunakan titik untuk desimal; batas ±1 triliun.</p>
             <div class="form-actions"><button class="pill-button" type="submit">Hitung hasilnya <span aria-hidden="true">↗</span></button><a class="text-link" href="{{ route('calculator') }}">Reset</a></div>

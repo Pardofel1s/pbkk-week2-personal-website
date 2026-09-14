@@ -45,3 +45,27 @@ html[data-theme="dark"] .is-inner .site-frame {
     background: radial-gradient(ellipse at 85% 0%, #425c412e, transparent 35%),
         radial-gradient(ellipse at 10% 0%, #674a3429, transparent 45%), var(--surface-low);
 }
+
+/* Calculator: readable contrast and directly selectable operations. */
+.calculator-page .page-heading h1 em { color: #8b4934; }
+.calculator-layout { gap: 1rem; }
+.calculator-form,.calculation-output { border-radius: 18px; }
+.operation-picker { border: 0; padding: 0; margin: 1.4rem 0; min-width: 0; }
+.operation-picker legend { float: none; width: auto; font: 600 .8rem/1.5 var(--sans); margin-bottom: .65rem; }
+.operation-options { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: .5rem; }
+.operation-choice { position: relative; cursor: pointer; min-width: 0; }
+.calculator-form .operation-choice input { position: absolute; opacity: 0; width: 1px; height: 1px; min-height: 0; padding: 0; border: 0; }
+.operation-tile { display: flex; flex-direction: column; align-items: center; gap: .3rem; padding: .8rem .25rem; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); color: var(--ink); font: 600 .75rem/1.5 var(--sans); transition: background .2s, border-color .2s; }
+.operation-symbol { font: 400 1.8rem/1 var(--sans); }
+.operation-choice input:checked + .operation-tile { background: #376942; color: #fff; border: 2px solid #376942; padding: calc(.8rem - 1px) calc(.25rem - 1px); box-shadow: 0 3px 10px #37694225; }
+.operation-choice input:focus-visible + .operation-tile { outline: 3px solid var(--coral-dark); outline-offset: 3px; }
+.operation-choice:hover .operation-tile { border-color: var(--coral-dark); }
+html[data-theme="dark"] .calculator-page .page-heading { background: linear-gradient(120deg,#28392f,#292b27); border: 1px solid #a9bd9c35; border-radius: 18px; padding: clamp(1.5rem,4vw,3rem); }
+html[data-theme="dark"] .calculator-page .page-heading h1 { color: #fff3dc; }
+html[data-theme="dark"] .calculator-page .page-heading h1 em { color: #ffc29b; }
+html[data-theme="dark"] .calculator-page .page-heading p { color: #dedace; }
+html[data-theme="dark"] .calculation-output { background: #26382f; color: #fff3dc; border: 1px solid #a9bd9c40; }
+html[data-theme="dark"] .calculation-output p,html[data-theme="dark"] .calculation-output .field-help { color: #dedace; }
+html[data-theme="dark"] .result-symbol,html[data-theme="dark"] .result-number,html[data-theme="dark"] .calculation-output h2 em { color: #ffc29b; }
+html[data-theme="dark"] .operation-choice input:checked + .operation-tile { background: #edbd98; color: #251b14; border-color: #edbd98; }
+html[data-theme="dark"] .calculator-form .field-help { color: #c5c2b4; }
