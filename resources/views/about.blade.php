@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'About')
 @section('content')
-<section class="page-content">
+<section class="page-content about-page">
     <div class="page-heading"><p class="eyebrow">THE ACADEMIC SIDE / ABOUT</p><h1>A place to learn.<br><em>A world to explore.</em></h1><p>Departemen Teknik Informatika<br>Institut Teknologi Sepuluh Nopember</p></div>
     <div class="row g-5 align-items-center">
         <div class="col-lg-5"><div class="academic-poster"><span class="eyebrow">SURABAYA · INDONESIA</span><span class="academic-monogram">ITS<span>INFORMATIKA</span></span><span class="poster-rule"></span><p>Ideas begin with<br><em>a good question.</em></p></div></div>

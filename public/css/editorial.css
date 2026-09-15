@@ -17,6 +17,13 @@ html[data-theme="light"] .pointer-spark { width: 13px; height: 13px; background:
 .hero h1 { color: var(--ink); text-shadow: none; }
 .hero h1 em { color: #804532; }
 .page-heading { border-bottom: 1px solid var(--line); padding-bottom: 2rem; }
+.about-page .page-heading { padding: clamp(2rem, 6vw, 5rem); margin: -1rem -1rem 3rem; border: 1px solid var(--line); border-radius: 24px; background: linear-gradient(135deg, rgba(255,224,186,.72), rgba(248,196,173,.42) 48%, rgba(195,205,176,.5)); box-shadow: 0 24px 60px rgba(112,61,43,.14); }
+.about-page .page-heading h1 { font-size: clamp(3rem, 7vw, 6.8rem); max-width: 11ch; text-wrap: balance; }
+.about-page .academic-poster { min-height: 520px; border-radius: 22px; box-shadow: 18px 22px 0 rgba(168,56,42,.12), 0 28px 60px rgba(71,39,29,.18); transform: rotate(-1.5deg); }
+.about-page .prose-block { padding: clamp(1rem, 3vw, 3rem); }
+.about-page .prose-block h2 { font-size: clamp(2.4rem, 5vw, 4.6rem); }
+html[data-theme="dark"] .about-page .page-heading { background: linear-gradient(135deg,#3b4435,#3a2e2b 52%,#27372d); box-shadow: 0 24px 60px #0005; }
+html[data-theme="dark"] .about-page .academic-poster { box-shadow: 18px 22px 0 #f6ad9122, 0 28px 60px #0007; }
 .academic-intro { max-width: 68ch; font-size: 1.1rem; line-height: 1.9; color: var(--muted); margin-bottom: 2.5rem; }
 .academic-cards { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; margin: 3rem 0; }
 .academic-cards > a { display: flex; flex-direction: column; padding: 2rem; min-height: 340px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px 8px 60px 8px; transition: transform .25s, box-shadow .25s; color: var(--ink); }
