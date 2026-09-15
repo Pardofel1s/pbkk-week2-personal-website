@@ -9,6 +9,8 @@
     let observer;
     let enabled = false;
     let trailTick = 0;
+    let lastTrailX = -Infinity;
+    let lastTrailY = -Infinity;
     let frame = 0;
     const animate = (element, keyframes, options = {}) => {
         if (!enabled || !element || typeof element.animate !== 'function') return;
@@ -63,6 +65,11 @@
     if (trail && finePointer.matches) {
         document.addEventListener('pointermove', event => {
             if (!enabled || event.pointerType === 'touch' || trailTick) return;
+            const dx = event.clientX - lastTrailX;
+            const dy = event.clientY - lastTrailY;
+            if (Math.hypot(dx, dy) < 24) return;
+            lastTrailX = event.clientX;
+            lastTrailY = event.clientY;
             trailTick = requestAnimationFrame(() => {
                 trailTick = 0;
                 const spark = document.createElement('i');
