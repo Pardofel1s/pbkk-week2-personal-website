@@ -37,7 +37,7 @@ html[data-theme="light"] .pointer-spark { width: 13px; height: 13px; background:
 .form-control,.form-select { color: var(--ink); background-color: var(--panel); border-color: var(--line); min-height: 48px; }
 .form-control:focus,.form-select:focus { color: var(--ink); background-color: var(--panel); border-color: var(--coral-dark); box-shadow: 0 0 0 3px var(--accent-soft); }
 html[data-theme="dark"] .is-home .site-frame { background: radial-gradient(ellipse at 88% 8%,#425c4144,transparent 35%),radial-gradient(ellipse at 10% 10%,#674a3444,transparent 35%),var(--surface-low); }
-html[data-theme="light"] .site-frame { background: radial-gradient(ellipse at 92% 5%, rgba(195,205,176,.55), transparent 28%), radial-gradient(ellipse at 8% 16%, rgba(255,224,186,.65), transparent 30%), linear-gradient(145deg, #fff8f2 0%, #f9f2ec 52%, #f3e8de 100%); }
+html[data-theme="light"] .site-frame { background: radial-gradient(ellipse at 87% 2%, #c3cdb08c, transparent 20%), radial-gradient(ellipse at 10% 3%, #ffe0ba, transparent 19%), linear-gradient(#f8c4ad 0, #f6b2a0 880px, var(--surface-low) 1100px); }
 html[data-theme="dark"] .hero h1 em { color: #ecba96; }
 html[data-theme="dark"] .main-nav { background: transparent; }
 html[data-theme="dark"] .prose-block,html[data-theme="dark"] .prose-block p,html[data-theme="dark"] .page-heading p,html[data-theme="dark"] .section-heading p,html[data-theme="dark"] .showcase-card p,html[data-theme="dark"] .site-footer,html[data-theme="dark"] .project-card,html[data-theme="dark"] .blog-row { color: var(--ink); }
