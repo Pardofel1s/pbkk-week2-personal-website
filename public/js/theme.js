@@ -4,6 +4,8 @@
     let chosen = null;
     try { chosen = localStorage.getItem('portfolio-theme'); } catch {}
     const apply = theme => {
+        root.classList.remove('theme-to-light', 'theme-to-dark');
+        root.classList.add('theme-transition', theme === 'light' ? 'theme-to-light' : 'theme-to-dark');
         root.dataset.theme = theme;
         root.style.colorScheme = theme;
         const button = document.querySelector('.theme-toggle');
@@ -14,6 +16,7 @@
             button.querySelector('[data-theme-label]').textContent = dark ? 'Terang' : 'Gelap';
         }
         document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#171b19' : '#fff8f2');
+        window.setTimeout(() => root.classList.remove('theme-transition', 'theme-to-light', 'theme-to-dark'), 850);
     };
     apply(['light', 'dark'].includes(chosen) ? chosen : (system.matches ? 'dark' : 'light'));
     document.addEventListener('DOMContentLoaded', () => {

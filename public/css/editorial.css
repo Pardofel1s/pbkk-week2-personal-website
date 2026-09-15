@@ -2,6 +2,10 @@
 :root { --panel: #fffaf5; --accent-soft: #eedbcd; --accent-ink: #5f392b; }
 html[data-theme="dark"] { --surface: #101512; --surface-low: #171e19; --panel: #202a23; --ink: #f3e9da; --muted: #c5c2b4; --line: #e8dfca30; --coral-dark: #f6ad91; --sage-dark: #365d45; --accent-soft: #303d31; --accent-ink: #efc6a5; }
 .site-frame { border-radius: 24px; border-color: var(--line); }
+html.theme-transition::before { content: ''; position: fixed; z-index: 999; inset: 0; pointer-events: none; opacity: 0; background: radial-gradient(circle at 50% 110%, #ffd28a 0 5%, #f7a77d55 18%, transparent 48%); animation: theme-sunrise .8s cubic-bezier(.2,.7,.2,1) both; }
+html.theme-transition.theme-to-dark::before { background: radial-gradient(circle at 50% 110%, #f6ad91 0 4%, #5b443d44 18%, transparent 48%); animation-name: theme-sunset; }
+@keyframes theme-sunrise { 0% { opacity: 0; transform: translateY(35%); } 35% { opacity: .6; } 100% { opacity: 0; transform: translateY(-12%); } }
+@keyframes theme-sunset { 0% { opacity: 0; transform: translateY(-12%); } 35% { opacity: .45; } 100% { opacity: 0; transform: translateY(35%); } }
 .pointer-trail { position: fixed; inset: 0; z-index: 100; pointer-events: none; overflow: hidden; }
 .pointer-spark { position: absolute; width: 4px; height: 4px; transform: translate(-50%, -50%); opacity: .42; filter: blur(1px); animation: pointer-spark-light .9s ease-out forwards; }
 html[data-theme="dark"] .pointer-spark { border-radius: 50%; background: #fff7d688; box-shadow: 0 0 3px 1px #ffe6a644, 0 0 7px 2px #ff9bd822; }
