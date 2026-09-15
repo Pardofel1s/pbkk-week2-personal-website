@@ -22,6 +22,8 @@ html[data-theme="light"] .pointer-spark { width: 13px; height: 13px; background:
 .about-page .academic-poster { min-height: 520px; border-radius: 22px; box-shadow: 18px 22px 0 rgba(168,56,42,.12), 0 28px 60px rgba(71,39,29,.18); transform: rotate(-1.5deg); }
 .about-page .prose-block { padding: clamp(1rem, 3vw, 3rem); }
 .about-page .prose-block h2 { font-size: clamp(2.4rem, 5vw, 4.6rem); }
+html[data-theme="light"] .about-page .page-heading,html[data-theme="light"] .about-page .academic-poster,html[data-theme="light"] .about-page .profile-facts > div { border-color: rgba(255,255,255,.92); }
+html[data-theme="light"] .about-page .profile-facts > div { background: #fff; color: #2a1d1a; box-shadow: 0 14px 28px rgba(88,65,62,.12); }
 html[data-theme="dark"] .about-page .page-heading { background: linear-gradient(135deg,#3b4435,#3a2e2b 52%,#27372d); box-shadow: 0 24px 60px #0005; }
 html[data-theme="dark"] .about-page .academic-poster { box-shadow: 18px 22px 0 #f6ad9122, 0 28px 60px #0007; }
 .academic-intro { max-width: 68ch; font-size: 1.1rem; line-height: 1.9; color: var(--muted); margin-bottom: 2.5rem; }
