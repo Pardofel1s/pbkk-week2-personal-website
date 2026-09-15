@@ -67,7 +67,7 @@
             if (!enabled || event.pointerType === 'touch' || trailTick) return;
             const dx = event.clientX - lastTrailX;
             const dy = event.clientY - lastTrailY;
-            if (Math.hypot(dx, dy) < 24) return;
+            if (Math.hypot(dx, dy) < 14) return;
             lastTrailX = event.clientX;
             lastTrailY = event.clientY;
             trailTick = requestAnimationFrame(() => {
