@@ -5,7 +5,10 @@ use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'index'])->name('home');
+Route::get('/beranda', [PageController::class, 'index'])->name('beranda');
 Route::get('/about', [PageController::class, 'about'])->name('about');
+Route::get('/profil-mahasiswa', [PageController::class, 'profile'])->name('profile');
+Route::get('/ide-agent/{tema?}', [PageController::class, 'agent'])->name('agent.idea');
 Route::get('/project-idea', [PageController::class, 'project'])->name('project');
 Route::get('/projects', [PageController::class, 'projects'])->name('projects');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');

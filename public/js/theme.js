@@ -1,7 +1,7 @@
 (() => {
     const root = document.documentElement;
     const system = window.matchMedia('(prefers-color-scheme: dark)');
-    let chosen = null;
+    let chosen = ['light', 'dark'].includes(window.routeTheme) ? window.routeTheme : null;
     try { chosen = localStorage.getItem('portfolio-theme'); } catch {}
     const apply = theme => {
         root.classList.remove('theme-to-light', 'theme-to-dark');

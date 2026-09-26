@@ -11,12 +11,38 @@ class PageController extends Controller
 {
     public function index(): View
     {
-        return $this->page('home');
+        $visitorName = trim((string) request('user', ''));
+
+        return $this->page('home', compact('visitorName'));
     }
 
     public function about(): View
     {
         return $this->page('about');
+    }
+
+    public function profile(): View
+    {
+        return view('academic', array_merge($this->shared(), [
+            'title' => config('portfolio.name'),
+            'description' => config('portfolio.bio'),
+            'showProfile' => true,
+        ]));
+    }
+
+    public function agent(?string $tema = null): View
+    {
+        $tema = $tema ?: 'General Assistant Agent';
+        $description = match (strtolower($tema)) {
+            'dast' => 'Rancangan Agentic AI untuk Dynamic Application Security Testing. Agen memetakan endpoint, memilih pengujian berdasarkan respons HTTP, lalu menyusun laporan temuan dan saran perbaikan. MVP diuji secara legal pada aplikasi lokal seperti DVWA atau OWASP Juice Shop.',
+            'general assistant agent' => 'Asisten AI yang membantu pengguna memahami permintaan, memilih alat yang sesuai, dan menyusun langkah penyelesaian secara terarah.',
+            default => 'Tema platform AI: '.$tema.'. Rincian rancangan untuk tema ini belum ditambahkan.',
+        };
+
+        return view('academic', array_merge($this->shared(), [
+            'title' => strtolower($tema) === 'dast' ? 'Agentic AI / DAST' : $tema,
+            'description' => $description,
+        ]));
     }
 
     public function project(): RedirectResponse

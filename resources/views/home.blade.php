@@ -4,6 +4,9 @@
 <section class="hero" aria-labelledby="hero-heading">
     <div class="hero-copy">
         <p class="eyebrow"><span class="status-dot"></span> Selamat datang · Informatika ITS</p>
+        @if(!empty($visitorName ?? null))
+            <x-status-banner type="success">Selamat datang, {{ $visitorName }}.</x-status-banner>
+        @endif
         <h1 id="hero-heading">HELLO!<br>I’M <em>KAMAL.</em></h1>
         <p class="hero-intro">Building intelligent systems.<br>Where software, data, and decisions meet.</p>
         <p class="identity">{{ $profile['name'] }} <span>NRP {{ $profile['nrp'] }}</span></p>

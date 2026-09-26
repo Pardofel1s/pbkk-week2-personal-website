@@ -4,6 +4,9 @@
 <section class="page-content academic-page">
     <div class="page-heading"><p class="eyebrow">KAMAL / ACADEMIC JOURNAL</p><h1>{{ $title }}</h1></div>
     <div class="academic-intro"><p>{{ $description }}</p></div>
+    @if(!($showProfile ?? false) && !($showGpa ?? false))
+        <x-status-banner type="success">Halaman ini dirender melalui master layout dan data dari controller.</x-status-banner>
+    @endif
     @if(request()->routeIs('dashboard.index'))
     <div class="academic-cards">
         <a href="{{ route('dashboard.student', ['nrp' => $profile['nrp']]) }}"><span class="eyebrow">01 / THE PERSON</span><h2>Profil &<br><em>perjalanan.</em></h2><p>Pendidikan, riset, dan hal-hal yang saya bangun.</p><span>Kenali Kamal ↗</span></a>
@@ -13,13 +16,13 @@
     @endif
     <div class="prose-block">
     @if($showProfile ?? false)
-        <dl class="profile-facts">
-            <div><dt>IPK</dt><dd>{{ $profile['gpa'] }} / 4.00</dd></div>
-            <div><dt>SKS ditempuh</dt><dd>{{ $profile['credits'] }} SKS</dd></div>
-            <div><dt>NRP</dt><dd>{{ $profile['nrp'] }}</dd></div>
-            <div><dt>Email</dt><dd>{{ $profile['email'] }}</dd></div>
-            <div><dt>Riwayat studi</dt><dd>2024–sekarang · S1 Teknik Informatika ITS</dd></div>
-        </dl>
+        <div class="profile-facts">
+            <x-info-card label="IPK" value="{{ $profile['gpa'] }} / 4.00" tone="peach" />
+            <x-info-card label="SKS ditempuh" value="{{ $profile['credits'] }} SKS" tone="sage" />
+            <x-info-card label="NRP" value="{{ $profile['nrp'] }}" tone="lilac" />
+            <x-info-card label="Email" value="{{ $profile['email'] }}" tone="peach" />
+            <x-info-card label="Riwayat studi" value="2024–sekarang · S1 Teknik Informatika ITS" tone="sage" />
+        </div>
         <p class="small">Ringkasan transkrip sementara per {{ $profile['academic_date'] }}.</p>
         @foreach(['education' => 'Pendidikan', 'experience' => 'Pengalaman & organisasi'] as $key => $heading)
         <h2 class="mt-5">{{ $heading }}</h2>

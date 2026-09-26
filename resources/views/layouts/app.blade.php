@@ -6,12 +6,10 @@
     <script src="{{ asset('js/theme.js') }}?v={{ filemtime(public_path('js/theme.js')) }}"></script>
     <meta name="theme-color" content="#fba28c">
     <meta name="description" content="Personal website Kamal Zaky Adinata. Profil mahasiswa Informatika ITS, eksperimen visual, proyek, dan catatan belajar.">
+    <script>window.routeTheme = @json(request('mode'));</script>
     <title>@yield('title', 'Home') — {{ $profile['short_name'] }}</title>
     <link rel="icon" href="{{ asset('images/favicon.svg') }}" type="image/svg+xml">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/portfolio.css') }}?v={{ filemtime(public_path('css/portfolio.css')) }}">
-    <link rel="stylesheet" href="{{ asset('css/motion.css') }}?v={{ filemtime(public_path('css/motion.css')) }}">
-    <link rel="stylesheet" href="{{ asset('css/editorial.css') }}?v={{ filemtime(public_path('css/editorial.css')) }}">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="{{ asset('js/portfolio.js') }}" defer></script>
     <script src="{{ asset('js/motion.js') }}" defer></script>
     <script src="{{ asset('js/music.js') }}" defer></script>
