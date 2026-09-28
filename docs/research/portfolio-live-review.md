@@ -33,6 +33,6 @@ Several visually louder examples were useful as limits. [0110 Studio](https://am
 - The existing page-section selector and compact section labels remain; the sampled portfolios confirmed their value on long pages.
 - No large 3D scene or full-screen preloader was added. The sample showed both can dominate a portfolio and can delay access to its content.
 
-An additional one-request HTML audit covered 2,000 distinct destination homepages. It is a structural snapshot, not 2,000 visual reviews; its counts and limitations are recorded in [`portfolio-homepage-audit.md`](portfolio-homepage-audit.md) and [`portfolio-homepage-audit.csv`](portfolio-homepage-audit.csv).
+An additional HTML audit requested 2,400 distinct destination homepages; 2,085 returned HTTP 2xx pages. It is a structural snapshot, not 2,400 visual reviews; its counts and limitations are recorded in [`portfolio-homepage-audit.md`](portfolio-homepage-audit.md) and [`portfolio-homepage-audit.csv`](portfolio-homepage-audit.csv).
 
 The reference list is a design survey, not a claim that every page in the Awwwards catalogue is current, available, or visually reviewed. The snapshot counts are in [`portfolio-catalog-summary.md`](portfolio-catalog-summary.md).

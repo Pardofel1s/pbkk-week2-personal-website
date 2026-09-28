@@ -80,7 +80,7 @@ Mode terang/gelap tersedia dari tombol di header. Pilihan disimpan di browser; k
 
 Animasi mengikuti aksi pengguna dan kemunculan konten, bukan loop dekoratif. Pembaca surat memakai native dialog dan mendukung Escape serta tombol panah. Cursor desktop meninggalkan guratan tinta kecil pada mode terang dan glint hangat pada mode gelap; efek dimatikan pada layar sentuh dan preferensi reduced motion. Catatan referensi dan keputusan desain tersedia di [`docs/design/UI_REDESIGN.md`](docs/design/UI_REDESIGN.md).
 
-Riset desain mencakup **4.526 listing Awwwards**, audit HTML satu permintaan pada **2.000 homepage unik**, dan sampel visual terpisah 24 entri (15 dapat dinilai secara visual, dua hanya termuat sebagian, empat tidak tersedia, satu listing tanpa tautan tujuan, dan dua tujuan tidak dibuka). Audit HTML bukan peninjauan visual 2.000 situs. Metode, temuan, serta batasannya ada di [`docs/research/portfolio-homepage-audit.md`](docs/research/portfolio-homepage-audit.md) dan [`docs/research/portfolio-live-review.md`](docs/research/portfolio-live-review.md).
+Riset desain mencakup **4.526 listing Awwwards**, audit HTML pada **2.400 homepage unik** dengan **2.085 respons HTTP 2xx**, dan sampel visual terpisah 24 entri (15 dapat dinilai secara visual, dua hanya termuat sebagian, empat tidak tersedia, satu listing tanpa tautan tujuan, dan dua tujuan tidak dibuka). Audit HTML bukan peninjauan visual setiap situs. Metode, temuan, serta batasannya ada di [`docs/research/portfolio-homepage-audit.md`](docs/research/portfolio-homepage-audit.md) dan [`docs/research/portfolio-live-review.md`](docs/research/portfolio-live-review.md).
 
 ## Kesesuaian Tugas 4
 
