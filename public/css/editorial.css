@@ -62,8 +62,6 @@ html[data-theme="dark"] .profile-facts > div:hover { box-shadow: 0 18px 34px #00
 .academic-nav { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
 .academic-nav .text-link { padding: .65rem 1rem; border: 1px solid var(--line); border-radius: 999px; }
 .academic-page form { background: var(--panel); border: 1px solid var(--line); padding: 1.5rem; border-radius: 16px; }
-.form-control,.form-select { color: var(--ink); background-color: var(--panel); border-color: var(--line); min-height: 48px; }
-.form-control:focus,.form-select:focus { color: var(--ink); background-color: var(--panel); border-color: var(--coral-dark); box-shadow: 0 0 0 3px var(--accent-soft); }
 html[data-theme="dark"] .is-home .site-frame { background: radial-gradient(ellipse at 88% 8%,#425c4144,transparent 35%),radial-gradient(ellipse at 10% 10%,#674a3444,transparent 35%),var(--surface-low); }
 html[data-theme="light"] .site-frame { background: radial-gradient(ellipse at 87% 2%, #c3cdb08c, transparent 20%), radial-gradient(ellipse at 10% 3%, #ffe0ba, transparent 19%), linear-gradient(#f8c4ad 0%, #f6b2a0 100%); }
 html[data-theme="dark"] .hero h1 em { color: #ecba96; }

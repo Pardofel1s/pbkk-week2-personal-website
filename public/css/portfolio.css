@@ -283,11 +283,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible { 
 .not-found { padding-top: 6rem; padding-bottom: 8rem; }
 .not-found .pill-button { margin-top: 1rem; }
 
-/* Bootstrap supplies its responsive grid via CDN. This small fallback also keeps content usable offline. */
-.row { display: flex; flex-wrap: wrap; }
-.row > * { min-width: 0; }
-@media (min-width: 768px) { .col-md-4 { width: 33.333333%; } }
-@media (min-width: 992px) { .col-lg-5 { width: 41.666667%; } .col-lg-7 { width: 58.333333%; } }
 @media (max-width: 1250px) {
   .site-header { padding: 1.6rem 2.3rem; gap: 1rem; }
   .main-nav { gap: 1rem; }

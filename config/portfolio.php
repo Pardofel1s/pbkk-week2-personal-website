@@ -32,7 +32,7 @@ return [
     ],
     'repository' => 'https://github.com/Pardofel1s/pbkk-personal-website/tree/feature/personal-website-complete',
     'projects' => [
-        ['title' => 'A little corner of the internet.', 'subtitle' => 'Personal website', 'description' => 'Rumah digital untuk profil, eksperimen visual, dan catatan belajar. Dibangun untuk tugas pertama PBKK.', 'stack' => ['Laravel', 'Blade', 'Bootstrap'], 'status' => 'In Progress', 'visual' => 'portfolio', 'route' => 'home'],
+        ['title' => 'A little corner of the internet.', 'subtitle' => 'Personal website', 'description' => 'Rumah digital untuk profil, eksperimen visual, dan catatan belajar. Dibangun dengan Laravel, Blade, dan Tailwind CSS.', 'stack' => ['Laravel', 'Blade', 'Tailwind CSS'], 'status' => 'In Progress', 'visual' => 'portfolio', 'route' => 'home'],
         ['title' => 'Small details, a little motion.', 'subtitle' => 'CSS playground', 'description' => 'Eksperimen kartu bertumpuk, permukaan kaca, dan warna organik yang bisa dicoba langsung di Home.', 'stack' => ['CSS', 'JavaScript'], 'status' => 'Experimental', 'visual' => 'playground', 'route' => 'home', 'anchor' => '#playground'],
         ['title' => 'A place for everyday numbers.', 'subtitle' => 'Kalkulator dinamis', 'description' => 'Empat operasi dasar, input desimal, dan hasil yang bisa dibuka kembali melalui URL.', 'stack' => ['PHP', 'Laravel'], 'status' => 'Finished', 'visual' => 'calculator', 'route' => 'calculator'],
     ],

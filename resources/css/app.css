@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-@import 'bootstrap/dist/css/bootstrap.min.css';
 @import '../../public/css/portfolio.css';
 @import '../../public/css/motion.css';
 @import '../../public/css/editorial.css';
@@ -10,6 +9,7 @@
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
+@source not '../views/welcome.blade.php';
 @source '../**/*.js';
 
 @theme {
