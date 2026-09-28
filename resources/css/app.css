@@ -3,6 +3,9 @@
 @import '../../public/css/portfolio.css';
 @import '../../public/css/motion.css';
 @import '../../public/css/editorial.css';
+@import './studio.css';
+@import './inner-studio.css';
+@import './interactions.css';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
