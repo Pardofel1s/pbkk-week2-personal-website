@@ -19,48 +19,131 @@ document.addEventListener('keydown', (event) => {
 });
 nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
 
-const envelopeToggle = document.querySelector('.envelope-toggle');
-const cardReveals = document.querySelectorAll('[data-card-reveal]');
-envelopeToggle?.addEventListener('click', () => {
-    const envelope = document.querySelector('.envelope');
-    const open = envelope.classList.toggle('is-open');
-    if (!open) {
-        envelope.classList.remove('card-revealed');
-        cardReveals.forEach(card => card.setAttribute('aria-expanded', 'false'));
-        document.querySelector('.card-detail')?.setAttribute('aria-hidden', 'true');
-    }
-    envelopeToggle.setAttribute('aria-expanded', String(open));
-    envelopeToggle.setAttribute('aria-label', open ? 'Tutup holder kartu' : 'Buka holder kartu');
+// Native dialog keeps the reading surface outside transformed page containers.
+const desk = document.querySelector('.letter-desk');
+const deskToggle = document.querySelector('.desk-toggle');
+const notes = [...document.querySelectorAll('[data-note]')];
+const reader = document.querySelector('.note-reader');
+const readerPaper = document.querySelector('[data-reader-paper]');
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+let selectedNote = 0;
+let readerAnimation;
+let closingReader = false;
+const wrapNote = index => (index + notes.length) % notes.length;
+const animatePaper = (frames, duration = 600) => {
+    readerAnimation?.cancel();
+    if (reducedMotion.matches) return null;
+    readerAnimation = readerPaper.animate(frames, { duration, easing: 'cubic-bezier(.18,.8,.22,1)' });
+    return readerAnimation;
+};
+const renderNote = index => {
+    selectedNote = wrapNote(index);
+    const note = notes[selectedNote];
+    readerPaper.dataset.tone = note.dataset.note;
+    reader.querySelector('#reader-title').textContent = note.dataset.noteTitle;
+    reader.querySelector('[data-reader-index]').textContent = note.querySelector('.desk-card-index').textContent;
+    reader.querySelector('[data-reader-message]').textContent = note.querySelector('.desk-message').textContent;
+    reader.querySelector('[data-reader-count]').textContent = (selectedNote + 1) + ' / ' + notes.length;
+    reader.querySelectorAll('[data-note-step]').forEach(button => {
+        const adjacent = notes[wrapNote(selectedNote + Number(button.dataset.noteStep))];
+        button.dataset.tone = adjacent.dataset.note;
+        button.querySelector('[data-peek-title]').textContent = adjacent.dataset.noteTitle;
+        button.setAttribute('aria-label', 'Baca kartu ' + adjacent.dataset.noteTitle);
+    });
+};
+const sourceTransform = note => {
+    const source = note.getBoundingClientRect();
+    const target = readerPaper.getBoundingClientRect();
+    return 'translate(' + (source.x + source.width / 2 - target.x - target.width / 2) + 'px, '
+        + (source.y + source.height / 2 - target.y - target.height / 2) + 'px) scale('
+        + (source.width / target.width) + ') rotate(-12deg)';
+};
+const openReader = index => {
+    if (!desk.classList.contains('is-open')) return;
+    renderNote(index);
+    reader.showModal();
+    document.body.classList.add('reading-note');
+    animatePaper([{ transform: sourceTransform(notes[index]), opacity: .4 }, { transform: 'none', opacity: 1 }], 700);
+    reader.querySelector('.reader-close').focus({ preventScroll: true });
+};
+const closeReader = () => {
+    if (!reader?.open || closingReader) return;
+    closingReader = true;
+    readerAnimation?.cancel();
+    const finish = () => {
+        reader.close();
+        document.body.classList.remove('reading-note');
+        closingReader = false;
+        notes[selectedNote].focus({ preventScroll: true });
+    };
+    const animation = animatePaper([{ transform: 'none', opacity: 1 }, { transform: sourceTransform(notes[selectedNote]), opacity: 0 }], 380);
+    if (animation) animation.finished.catch(() => {}).then(finish);
+    else finish();
+};
+const turnNote = direction => {
+    if (closingReader) return;
+    renderNote(selectedNote + direction);
+    animatePaper([
+        { transform: 'translate(' + direction * 70 + 'px, 20px) rotate(' + direction * 7 + 'deg)', opacity: .15 },
+        { transform: 'none', opacity: 1 },
+    ], 520);
+};
+notes.forEach((note, index) => {
+    note.disabled = true;
+    note.addEventListener('click', () => openReader(index));
 });
-cardReveals.forEach(cardReveal => cardReveal.addEventListener('click', () => {
-    const envelope = document.querySelector('.envelope');
-    if (!envelope.classList.contains('is-open')) return;
-    const key = cardReveal.dataset.cardReveal;
-    const revealed = envelope.classList.contains('card-revealed') && envelope.classList.contains('card-' + key) ? false : true;
-    envelope.classList.remove('card-explore', 'card-create', 'card-front');
-    envelope.classList.toggle('card-revealed', revealed);
-    if (revealed) envelope.classList.add('card-' + key);
-    cardReveals.forEach(card => card.setAttribute('aria-expanded', String(revealed && card === cardReveal)));
-    const text = { explore: 'Tetap ingin tahu: aku menikmati proses memahami hal baru, dari riset sampai eksperimen kecil.', create: 'Aku suka mengubah ide menjadi sesuatu yang bisa dicoba, dibagikan, dan dikembangkan bersama.', front: 'Tempat aku belajar, bereksperimen, dan membangun sesuatu dengan rasa ingin tahu.' }[key];
-    document.querySelector('[data-card-detail-text]').textContent = text;
-    document.querySelector('.card-detail')?.setAttribute('aria-hidden', String(!revealed));
-    cardReveal.setAttribute('aria-label', revealed ? 'Tutup detail kartu' : 'Buka detail kartu perkenalan');
-}));
+deskToggle?.addEventListener('click', () => {
+    const open = desk.classList.toggle('is-open');
+    deskToggle.setAttribute('aria-expanded', String(open));
+    deskToggle.querySelector('[data-desk-label]').textContent = open ? 'Fold away' : 'Press play';
+    document.querySelector('[data-desk-hint]').textContent = open ? 'Pilih salah satu kartu untuk membaca ceritanya.' : 'Tiga kartu, sedikit cerita. Buka amplopnya.';
+    notes.forEach(note => { note.disabled = !open; });
+});
+reader?.querySelector('.reader-close').addEventListener('click', closeReader);
+reader?.querySelectorAll('[data-note-step]').forEach(button => button.addEventListener('click', () => turnNote(Number(button.dataset.noteStep))));
+reader?.addEventListener('cancel', event => { event.preventDefault(); closeReader(); });
+reader?.addEventListener('click', event => { if (event.target === reader || event.target.classList.contains('reader-stage')) closeReader(); });
+reader?.addEventListener('keydown', event => {
+    if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+        event.preventDefault();
+        turnNote(event.key === 'ArrowRight' ? 1 : -1);
+    }
+});
+
 document.querySelector('[data-stack-toggle]')?.addEventListener('click', (event) => {
     const button = event.currentTarget;
     const spread = button.closest('.demo-stack').classList.toggle('is-spread');
     button.setAttribute('aria-pressed', String(spread));
-    button.textContent = spread ? 'Bring them together ↙' : 'Spread the cards ↗';
+    button.querySelector('[data-stack-label]').textContent = spread ? 'Bring them together' : 'Spread the cards';
+    button.querySelector('[aria-hidden="true"]').textContent = spread ? '↙' : '↗';
 });
-document.querySelector('[data-blur]')?.addEventListener('input', (event) => {
-    const value = event.target.value;
-    event.target.closest('.demo-glass').style.setProperty('--glass-blur', value + 'px');
-    document.querySelector('[data-blur-value]').textContent = value + ' px';
+document.querySelectorAll('[data-blur-demo]').forEach((demo) => {
+    const slider = demo.querySelector('[data-blur]');
+    const output = demo.querySelector('[data-blur-value]');
+    const presets = [...demo.querySelectorAll('[data-blur-preset]')];
+    if (!slider || !output) return;
+
+    const setBlur = (rawValue) => {
+        const value = Math.min(Number(slider.max), Math.max(Number(slider.min), Number(rawValue)));
+        const progress = ((value - Number(slider.min)) / (Number(slider.max) - Number(slider.min))) * 100;
+        slider.value = String(value);
+        slider.setAttribute('aria-valuetext', value + ' piksel');
+        demo.style.setProperty('--glass-blur', value + 'px');
+        demo.style.setProperty('--slider-progress', progress + '%');
+        output.textContent = value + ' px';
+        presets.forEach((button) => button.setAttribute('aria-pressed', String(Number(button.dataset.blurPreset) === value)));
+    };
+
+    slider.addEventListener('input', () => setBlur(slider.value));
+    presets.forEach((button) => button.addEventListener('click', () => setBlur(button.dataset.blurPreset)));
+    setBlur(slider.value);
 });
 document.querySelectorAll('[data-aura-choice]').forEach((button) => {
     button.addEventListener('click', () => {
-        button.closest('.demo-aura').dataset.aura = button.dataset.auraChoice;
-        document.querySelectorAll('[data-aura-choice]').forEach((choice) => choice.setAttribute('aria-pressed', String(choice === button)));
+        const demo = button.closest('.demo-aura');
+        demo.dataset.aura = button.dataset.auraChoice;
+        demo.querySelector('[data-aura-copy]').textContent = button.dataset.auraCopy;
+        demo.querySelectorAll('[data-aura-choice]').forEach((choice) => choice.setAttribute('aria-pressed', String(choice === button)));
     });
 });
 
