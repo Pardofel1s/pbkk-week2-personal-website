@@ -168,3 +168,39 @@ Sources: [YouTube IFrame Player API](https://developers.google.com/youtube/ifram
   glint. Both are capped, temporary, and disabled for touch and reduced motion.
 - The letter reader is a native dialog so focus, Escape, keyboard navigation,
   and the full-screen visual layer remain predictable.
+
+## Portfolio research and Week 4 fit
+
+The visual review compared curated sets of 23 portfolio examples from Figma and
+15 UX portfolio examples from Webflow, alongside current award-gallery examples.
+This is a focused review of relevant references rather than a claim that 100
+individual websites were exhaustively tested. Three recurring patterns fit this
+site: establish the person's identity and work quickly; let project context and
+process carry the story; use a small number of intentional interactions to add
+character without turning navigation into a game. The large, readable project
+previews and compact interactions shown by Jordan Jenkins and Robin Noguier,
+and the conversational tone and direct contact form on Vicky Marchenko's
+portfolio, informed this balance.
+
+For the academic assignment, the three required destinations are now explicit
+in the main navigation. The Agentic AI page has a working, validated idea form
+that presents a session-only receipt, keeping this individual Week 4 exercise
+independent of a database. Its dark-mode query class is a complete Tailwind
+class selected by a Blade condition, and the form greeting uses the reusable
+status banner. The footer now points to the ITS Informatics department.
+
+The production bundle is kept lean by compiling only the CSS entry with Vite,
+removing unused Bootstrap and Axios imports, and excluding Laravel's unused
+welcome view from Tailwind source scanning. Motion uses brief, interaction-led
+transitions and respects reduced-motion preferences. Where motion is used,
+transform and opacity avoid repeated layout work; persistent animation layers
+and unnecessary dependency payloads are avoided.
+
+Research references:
+
+- [Figma: 23 portfolio examples](https://www.figma.com/resource-library/portfolio-website-examples/) — project-first hierarchy, readable typography, and subtle interactions.
+- [Webflow: 15 UX portfolio examples](https://webflow.com/blog/ux-designer-portfolio) — personal tone, transparent case-study process, accessible contrast, and contact paths.
+- [Awwwards portfolio award archive](https://www.awwwards.com/websites/portfolio/) — art direction and interaction patterns from awarded portfolio sites.
+- [Apple Human Interface Guidelines: Motion](https://developer.apple.com/design/human-interface-guidelines/motion/) — motion should communicate status, feedback, and relationships.
+- [web.dev: Animations and performance](https://web.dev/articles/animations-and-performance) — prefer compositor-friendly `transform` and `opacity`, and avoid unnecessary `will-change` layers.
+- [Tailwind CSS: Source detection](https://tailwindcss.com/docs/detecting-classes-in-source-files) — keep full utility class names statically detectable and exclude unused sources.
