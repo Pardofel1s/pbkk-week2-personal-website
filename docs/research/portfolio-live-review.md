@@ -4,7 +4,7 @@ Reviewed: 28 September 2026
 
 ## Scope and method
 
-The catalogue contains **2,108 distinct Awwwards portfolio submissions** gathered from 68 paginated gallery pages. Each row is a listing and its public metadata; it does not mean that all 2,108 destination sites were opened or visually reviewed. The full catalogue is in [`portfolio-catalog.csv`](portfolio-catalog.csv).
+The current catalogue contains **4,526 distinct Awwwards portfolio submissions** from 146 successful gallery pages. Each row is a listing and its public metadata; it does not mean that all 4,526 destination sites were opened or visually reviewed. The full catalogue is in [`portfolio-catalog.csv`](portfolio-catalog.csv). This 24-entry visual sample was selected earlier from a 2,108-record snapshot and remains a separate, explicitly bounded review.
 
 For a direct review, 24 listing records were selected across eight visual themes and three pagination bands (recent, middle, earlier). The exact selection and source record for each entry are in [`portfolio-live-review-sample.csv`](portfolio-live-review-sample.csv). The page bands are positions in the archive, not publication-year claims.
 
@@ -32,5 +32,7 @@ Several visually louder examples were useful as limits. [0110 Studio](https://am
 - The song is streamed from the official SoundCloud release. Its embed and official Widget API are loaded only after the visitor opens the player, keeping the first page view free of music-player network requests.
 - The existing page-section selector and compact section labels remain; the sampled portfolios confirmed their value on long pages.
 - No large 3D scene or full-screen preloader was added. The sample showed both can dominate a portfolio and can delay access to its content.
+
+An additional one-request HTML audit covered 2,000 distinct destination homepages. It is a structural snapshot, not 2,000 visual reviews; its counts and limitations are recorded in [`portfolio-homepage-audit.md`](portfolio-homepage-audit.md) and [`portfolio-homepage-audit.csv`](portfolio-homepage-audit.csv).
 
 The reference list is a design survey, not a claim that every page in the Awwwards catalogue is current, available, or visually reviewed. The snapshot counts are in [`portfolio-catalog-summary.md`](portfolio-catalog-summary.md).

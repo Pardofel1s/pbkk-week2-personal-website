@@ -1,6 +1,6 @@
 param(
-    [int] $TargetUniqueSites = 2100,
-    [int] $MaxPages = 110,
+    [int] $TargetUniqueSites = 4500,
+    [int] $MaxPages = 200,
     [int] $DelayMilliseconds = 750
 )
 
