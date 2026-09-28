@@ -42,7 +42,34 @@ class PageController extends Controller
         return view('academic', array_merge($this->shared(), [
             'title' => strtolower($tema) === 'dast' ? 'Agentic AI / DAST' : $tema,
             'description' => $description,
+            'isDarkMode' => request()->query('mode') === 'dark',
+            'ideaSubmission' => session('ideaSubmission'),
         ]));
+    }
+
+    public function submitIdea(Request $request): RedirectResponse
+    {
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:80'],
+            'idea' => ['required', 'string', 'min:20', 'max:2000'],
+            'tema' => ['nullable', 'string', 'regex:/^[\\pL\\pN-]{1,80}$/u'],
+            'mode' => ['nullable', 'in:light,dark'],
+        ]);
+
+        $request->session()->flash('ideaSubmission', [
+            'name' => trim($data['name']),
+            'idea' => trim($data['idea']),
+        ]);
+
+        $routeParameters = [];
+        if (! empty($data['tema'])) {
+            $routeParameters['tema'] = $data['tema'];
+        }
+        if (! empty($data['mode'])) {
+            $routeParameters['mode'] = $data['mode'];
+        }
+
+        return redirect()->route('agent.idea', $routeParameters);
     }
 
     public function project(): RedirectResponse

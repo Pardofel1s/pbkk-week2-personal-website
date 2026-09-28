@@ -1,7 +1,10 @@
 @extends('layouts.app')
 @section('title', $title)
 @section('content')
-<section class="page-content inner-studio academic-folio">
+<section @class([
+    'page-content inner-studio academic-folio',
+    '!bg-[#211c19] !text-[#f6e8d6]' => $isDarkMode ?? false,
+])>
     <header class="folio-heading academic-folio-heading" data-reveal>
         <p class="folio-kicker"><span>KAMAL / ACADEMIC JOURNAL</span><span>Informatika ITS · 2024</span></p>
         @if($showProfile ?? false)
@@ -76,6 +79,46 @@
                     <p>Ruang untuk mengeksplorasi bagaimana sebuah asisten memahami tujuan, memilih alat yang sesuai, dan menyusun langkah penyelesaian.</p>
                     <ol class="concept-sequence"><li><span>01</span> Pahami permintaan</li><li><span>02</span> Pilih alat & langkah</li><li><span>03</span> Evaluasi hasil</li></ol>
                 @endif
+                <section class="idea-submission" aria-labelledby="idea-form-title" data-reveal>
+                    <div class="idea-form-heading">
+                        <p class="eyebrow">A NOTE FOR THE NEXT ITERATION</p>
+                        <h3 id="idea-form-title">Punya sudut pandang lain?</h3>
+                        <p>Kirimkan pertanyaan atau gagasan yang bisa membantu konsep ini berkembang.</p>
+                    </div>
+                    @if(!empty($ideaSubmission))
+                        <x-status-banner type="success" class="idea-feedback" role="status">
+                            Terima kasih, {{ $ideaSubmission['name'] }}. Ide ini tersimpan untuk sesi demo ini; belum dikirim ke database.
+                        </x-status-banner>
+                        <details class="idea-receipt">
+                            <summary>Lihat kembali ide yang dikirim</summary>
+                            <p>{{ $ideaSubmission['idea'] }}</p>
+                        </details>
+                    @endif
+                    @if($errors->any())
+                        <x-status-banner type="warning" class="idea-feedback" role="alert">
+                            {{ $errors->first() }}
+                        </x-status-banner>
+                    @endif
+                    <form action="{{ route('agent.idea.submit') }}" method="POST" class="idea-form">
+                        @csrf
+                        <input type="hidden" name="tema" value="{{ request()->route('tema') }}">
+                        <input type="hidden" name="mode" value="{{ request()->query('mode') }}">
+                        <div class="idea-form-name">
+                            <label for="idea-name">Namamu</label>
+                            <input id="idea-name" name="name" type="text" maxlength="80" autocomplete="name" value="{{ old('name') }}" placeholder="Nama atau panggilan" required>
+                            @error('name')<span class="field-error">{{ $message }}</span>@enderror
+                        </div>
+                        <div class="idea-form-message">
+                            <label for="idea-message">Ide atau masukan</label>
+                            <textarea id="idea-message" name="idea" rows="4" minlength="20" maxlength="2000" placeholder="Apa yang sebaiknya dipertimbangkan oleh agent ini?" required>{{ old('idea') }}</textarea>
+                            @error('idea')<span class="field-error">{{ $message }}</span>@enderror
+                        </div>
+                        <div class="idea-form-submit">
+                            <p>Masukan hanya bertahan di sesi browser ini. Penyimpanan permanen belum menjadi cakupan tugas Week 4.</p>
+                            <button class="pill-button" type="submit">Kirim ide <span aria-hidden="true">↗</span></button>
+                        </div>
+                    </form>
+                </section>
             </div>
         </div>
     @endif

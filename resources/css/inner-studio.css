@@ -213,6 +213,32 @@
 .concept-sequence { list-style: none; padding: 0; margin: 2rem 0 0; }
 .concept-sequence li { display: flex; gap: 1rem; padding: .75rem 0; border-top: 1px solid var(--folio-rule); font-size: .75rem; }
 .concept-sequence li > span { color: var(--folio-coral); font-size: .62rem; }
+.idea-submission { position: relative; margin-top: clamp(3rem, 6vw, 5.5rem); padding-top: 2.2rem; border-top: 1px solid var(--folio-rule); }
+.idea-form-heading { margin-bottom: 1.6rem; }
+.idea-form-heading .eyebrow { margin-bottom: .7rem; color: var(--folio-coral); }
+.idea-form-heading h3 { margin: 0 0 .65rem; font: 400 clamp(1.7rem, 2.6vw, 2.5rem)/1.1 var(--serif); letter-spacing: -.035em; }
+.idea-form-heading > p:last-child { margin: 0; color: var(--muted); font-size: .78rem; line-height: 1.7; }
+.idea-form { display: grid; gap: 1.1rem; }
+.idea-form > div { display: grid; gap: .45rem; }
+.idea-form label { color: var(--ink); font: 650 .67rem/1.5 var(--sans); letter-spacing: .035em; }
+.idea-form :is(input, textarea) { width: 100%; min-height: 48px; padding: .8rem .9rem; border: 1px solid color-mix(in srgb, var(--folio-green) 24%, var(--line)); border-radius: 3px 12px 12px 12px; background: color-mix(in srgb, var(--panel) 72%, var(--folio-paper)); color: var(--ink); font: 400 .78rem/1.65 var(--sans); transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease, transform .2s ease; }
+.idea-form textarea { min-height: 132px; resize: vertical; }
+.idea-form :is(input, textarea)::placeholder { color: var(--muted); opacity: .75; }
+.idea-form :is(input, textarea):focus { border-color: var(--folio-coral); outline: 0; background: var(--panel); box-shadow: 0 0 0 3px color-mix(in srgb, var(--folio-coral) 13%, transparent); transform: translateY(-1px); }
+.idea-form-submit { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: .2rem; }
+.idea-form-submit p { max-width: 34ch; margin: 0; color: var(--muted); font-size: .61rem; line-height: 1.65; }
+.idea-form-submit .pill-button { flex: 0 0 auto; }
+.idea-form-submit .pill-button span { display: inline-block; transition: transform .28s cubic-bezier(.2,.8,.2,1); }
+.idea-form-submit .pill-button:hover span { transform: translate(3px, -3px); }
+.idea-feedback { animation: idea-feedback-in .48s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes idea-feedback-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.idea-receipt { margin: -.6rem 0 1.3rem; padding: .8rem .95rem; border-left: 2px solid var(--folio-sage); background: color-mix(in srgb, var(--folio-sage) 17%, transparent); color: var(--ink); font-size: .71rem; }
+.idea-receipt summary { width: fit-content; cursor: pointer; font-weight: 650; }
+.idea-receipt p { margin: .7rem 0 0; color: var(--muted); line-height: 1.7; white-space: pre-wrap; overflow-wrap: anywhere; }
+.field-error { color: var(--folio-coral); font-size: .65rem; }
+.footer-its { max-width: 46ch; text-align: center; }
+.footer-its span { display: inline-block; transition: transform .25s ease; }
+.footer-its:hover span { transform: translate(2px, -2px); }
 .gpa-workspace { display: grid; grid-template-columns: 1fr 1fr; gap: 0; background: var(--folio-paper); }
 .gpa-form-note { padding: clamp(1.5rem, 4vw, 4rem); background: var(--folio-sage); color: #354a32; }
 .gpa-form-note > p:last-child { margin-top: 2rem; margin-bottom: 0; font-size: .8rem; }
@@ -314,6 +340,9 @@ html[data-theme="dark"] .inner-studio .worksheet-output .error-message { backgro
     .concept-print { min-height: 390px; }
     .concept-print > span { font-size: 4.5rem; }
     .inner-studio .worksheet-output { min-height: 450px; }
+    .idea-form-submit { align-items: stretch; flex-direction: column; }
+    .idea-form-submit .pill-button { align-self: flex-start; }
+    .footer-its { max-width: none; text-align: left; }
 }
 @media (max-width: 430px) {
     .folio-kicker > span:last-child { max-width: 105px; text-align: right; }

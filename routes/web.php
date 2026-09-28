@@ -9,6 +9,7 @@ Route::get('/beranda', [PageController::class, 'index'])->name('beranda');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/profil-mahasiswa', [PageController::class, 'profile'])->name('profile');
 Route::get('/ide-agent/{tema?}', [PageController::class, 'agent'])->name('agent.idea');
+Route::post('/ide-agent/masukan', [PageController::class, 'submitIdea'])->name('agent.idea.submit');
 Route::get('/project-idea', [PageController::class, 'project'])->name('project');
 Route::get('/projects', [PageController::class, 'projects'])->name('projects');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
