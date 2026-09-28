@@ -76,7 +76,9 @@ Unggah tautan repository publik ke LMS paling lambat H-1 Pertemuan 3. `.env` dan
 
 ## Tampilan dan navigasi
 
-Mode terang/gelap tersedia dari tombol di header. Pilihan disimpan di browser; kunjungan pertama mengikuti tema perangkat. Dashboard menyediakan kartu untuk profil, ide DAST, dan kalkulator IPK. Sambutan ITS menyatu dengan hero Home. Animasi mengikuti preferensi reduced motion perangkat.
+Mode terang/gelap tersedia dari tombol di header. Pilihan disimpan di browser; kunjungan pertama mengikuti tema perangkat. Tampilan memakai konsep personal field journal: tumpukan surat interaktif di Home, halaman proyek berbentuk studi editorial, koleksi seperti rak spesimen, blog sebagai indeks catatan, dan kalkulator sebagai lembar kerja dua panel.
+
+Animasi mengikuti aksi pengguna dan kemunculan konten, bukan loop dekoratif. Pembaca surat memakai native dialog dan mendukung Escape serta tombol panah. Cursor desktop meninggalkan guratan tinta kecil pada mode terang dan glint hangat pada mode gelap; efek dimatikan pada layar sentuh dan preferensi reduced motion. Catatan referensi dan keputusan desain tersedia di [`docs/design/UI_REDESIGN.md`](docs/design/UI_REDESIGN.md).
 
 ## Checklist pengumpulan
 
