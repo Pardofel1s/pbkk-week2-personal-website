@@ -15,6 +15,7 @@
     <script src="{{ asset('js/dream-sky.js') }}?v={{ filemtime(public_path('js/dream-sky.js')) }}" defer></script>
     <script src="{{ asset('js/music.js') }}?v={{ filemtime(public_path('js/music.js')) }}" defer></script>
     <script src="{{ asset('js/section-selector.js') }}?v={{ filemtime(public_path('js/section-selector.js')) }}" defer></script>
+    <script src="{{ asset('js/page-navigation.js') }}?v={{ filemtime(public_path('js/page-navigation.js')) }}" defer></script>
 </head>
 <body @class([
     request()->routeIs('home') ? 'is-home' : 'is-inner',

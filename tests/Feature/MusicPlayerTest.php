@@ -6,6 +6,17 @@ use Tests\TestCase;
 
 class MusicPlayerTest extends TestCase
 {
+    public function test_shared_layout_loads_persistent_navigation_on_primary_pages(): void
+    {
+        foreach (['/', '/about', '/projects', '/kalkulator'] as $uri) {
+            $this->get($uri)
+                ->assertOk()
+                ->assertSee('page-navigation.js', false)
+                ->assertSee('data-music-player', false)
+                ->assertSee('id="main-content"', false);
+        }
+    }
+
     public function test_song_plays_through_an_in_page_soundcloud_widget(): void
     {
         $this->get('/')

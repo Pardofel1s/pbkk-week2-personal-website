@@ -152,9 +152,11 @@ background audio on the website. It now opens an official SoundCloud widget
 for the League of Legends release. The iframe and Widget API load only after
 the panel opens. A compact play/pause button and seek bar use SoundCloud's
 official API; the embedded waveform controls remain available as a fallback if
-the API is unavailable. Closing the panel leaves playback running. Visitors
-still start the track with an explicit click, as browsers restrict unsolicited
-audio.
+the API is unavailable. Same-origin links and the calculator/idea forms now use
+an in-page navigation layer that preserves the header and SoundCloud iframe;
+the track can continue while visitors move between routes. Closing the panel
+also leaves playback running. Visitors still start the track with an explicit
+click, as browsers restrict unsolicited audio.
 
 The song is streamed by SoundCloud rather than copied into the repository. The
 release page credits Porter Robinson and labels the recording all-rights-
@@ -162,6 +164,15 @@ reserved, so local redistribution would need separate permission. The panel
 keeps a direct official-release link as a fallback if the embed is unavailable.
 The `K` key opens/closes the panel, `Escape` closes it, and the existing Home
 link remains next to the in-page player.
+
+### Route continuity
+
+Internal page links and supported HTML forms fetch the next Laravel page, swap
+the main content, update the address and active navigation item, then initialize
+page-specific interactions again. The header, soundtrack iframe, theme choice,
+background scene, and global scripts stay alive. Browser Back/Forward restore
+the page through `popstate`; external links, downloads, file forms, and failed
+requests retain normal browser behavior.
 
 ## Motion rules
 

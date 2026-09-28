@@ -115,4 +115,10 @@
         clearTransition();
         apply(chosen ?? (system.matches ? 'dark' : 'light'));
     });
+
+    document.addEventListener('portfolio:navigated', event => {
+        const nextRouteTheme = event.detail?.routeTheme;
+        if (valid(nextRouteTheme)) chosen = nextRouteTheme;
+        apply(chosen ?? (system.matches ? 'dark' : 'light'));
+    });
 })();

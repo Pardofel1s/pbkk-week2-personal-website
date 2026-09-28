@@ -32,6 +32,10 @@
         playerShell.dataset.playing = String(playing);
     };
 
+    frame.addEventListener('load', () => {
+        if (!widgetReady) status.textContent = 'Gunakan waveform SoundCloud di bawah jika kontrol kustom masih dimuat.';
+    });
+
     const updateProgress = (position, relativePosition) => {
         const progress = Number.isFinite(relativePosition) ? Math.max(0, Math.min(1, relativePosition)) : 0;
         const safePosition = Number.isFinite(position) ? position : 0;
@@ -74,6 +78,7 @@
 
     const connectWidget = async () => {
         if (!playerLoaded) {
+            frame.loading = 'eager';
             frame.src = frame.dataset.src;
             frame.removeAttribute('data-src');
             playerLoaded = true;

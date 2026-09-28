@@ -19,6 +19,7 @@ document.addEventListener('keydown', (event) => {
 });
 nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
 
+const initializePortfolio = () => {
 // Native dialog keeps the reading surface outside transformed page containers.
 const desk = document.querySelector('.letter-desk');
 const deskToggle = document.querySelector('.desk-toggle');
@@ -186,3 +187,7 @@ document.querySelector('[data-copy-url]')?.addEventListener('click', async () =>
         feedback.textContent = 'Belum bisa menyalin otomatis. Salin alamat dari address bar browser.';
     }
 });
+};
+
+document.addEventListener('portfolio:navigated', initializePortfolio);
+initializePortfolio();

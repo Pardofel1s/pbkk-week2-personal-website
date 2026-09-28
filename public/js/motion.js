@@ -7,7 +7,7 @@
     const activeAnimations = new Set();
     const visited = new WeakSet();
     const sparks = new Set();
-    const tiltCards = document.querySelectorAll('[data-tilt], .project-preview, .collection-visual');
+    const boundTiltCards = new WeakSet();
     let observer;
     let enabled = false;
     let frame = 0;
@@ -55,15 +55,44 @@
         if (!frame) frame = requestAnimationFrame(updateProgress);
     };
 
+    const bindTiltCards = () => {
+        document.querySelectorAll('[data-tilt], .project-preview, .collection-visual').forEach(card => {
+            if (boundTiltCards.has(card)) return;
+            boundTiltCards.add(card);
+
+            let tiltFrame = 0;
+            const reset = () => {
+                cancelAnimationFrame(tiltFrame);
+                card.style.removeProperty('--tilt-x');
+                card.style.removeProperty('--tilt-y');
+            };
+            card.addEventListener('pointermove', event => {
+                if (!enabled || !finePointer.matches || event.pointerType === 'touch') return;
+                const rect = card.getBoundingClientRect();
+                const x = (event.clientX - rect.left) / rect.width - .5;
+                const y = (event.clientY - rect.top) / rect.height - .5;
+                cancelAnimationFrame(tiltFrame);
+                tiltFrame = requestAnimationFrame(() => {
+                    card.style.setProperty('--tilt-x', (-y * 5).toFixed(2) + 'deg');
+                    card.style.setProperty('--tilt-y', (x * 5).toFixed(2) + 'deg');
+                });
+            });
+            card.addEventListener('pointerleave', reset);
+            card.addEventListener('pointercancel', reset);
+            card.addEventListener('blur', reset, true);
+        });
+    };
+
     const configure = () => {
         enabled = !preference.matches;
         root.classList.toggle('motion-on', enabled);
         observer?.disconnect();
         clearTrail();
+        bindTiltCards();
         if (!enabled) {
             activeAnimations.forEach(animation => animation.cancel());
             activeAnimations.clear();
-            tiltCards.forEach(card => {
+            document.querySelectorAll('[data-tilt], .project-preview, .collection-visual').forEach(card => {
                 card.style.removeProperty('--tilt-x');
                 card.style.removeProperty('--tilt-y');
             });
@@ -159,40 +188,26 @@
         }, { passive: true });
     }
 
-    document.querySelectorAll('.hero-copy > *, .page-heading > *, .article-page header > *').forEach((element, index) => {
-        visited.add(element);
-        reveal(element, index);
-    });
-    animate(document.querySelector('.header-rule'), [
-        { transform: 'scaleX(0)', transformOrigin: 'left' },
-        { transform: 'scaleX(1)', transformOrigin: 'left' },
-    ], { duration: 900 });
-    animate(document.querySelector('.result-number'), [
-        { opacity: 0, transform: 'translateY(15px) scale(.96)' },
-        { opacity: 1, transform: 'translateY(0) scale(1)' },
-    ], { duration: 750 });
-
-    tiltCards.forEach(card => {
-        let tiltFrame = 0;
-        const reset = () => {
-            cancelAnimationFrame(tiltFrame);
-            card.style.removeProperty('--tilt-x');
-            card.style.removeProperty('--tilt-y');
-        };
-        card.addEventListener('pointermove', event => {
-            if (!enabled || !finePointer.matches || event.pointerType === 'touch') return;
-            const rect = card.getBoundingClientRect();
-            const x = (event.clientX - rect.left) / rect.width - .5;
-            const y = (event.clientY - rect.top) / rect.height - .5;
-            cancelAnimationFrame(tiltFrame);
-            tiltFrame = requestAnimationFrame(() => {
-                card.style.setProperty('--tilt-x', (-y * 5).toFixed(2) + 'deg');
-                card.style.setProperty('--tilt-y', (x * 5).toFixed(2) + 'deg');
-            });
+    const animatePageIntro = () => {
+        document.querySelectorAll('.hero-copy > *, .page-heading > *, .article-page header > *').forEach((element, index) => {
+            visited.add(element);
+            reveal(element, index);
         });
-        card.addEventListener('pointerleave', reset);
-        card.addEventListener('pointercancel', reset);
-        card.addEventListener('blur', reset, true);
+        animate(document.querySelector('.header-rule'), [
+            { transform: 'scaleX(0)', transformOrigin: 'left' },
+            { transform: 'scaleX(1)', transformOrigin: 'left' },
+        ], { duration: 900 });
+        animate(document.querySelector('.result-number'), [
+            { opacity: 0, transform: 'translateY(15px) scale(.96)' },
+            { opacity: 1, transform: 'translateY(0) scale(1)' },
+        ], { duration: 750 });
+    };
+    animatePageIntro();
+
+    document.addEventListener('portfolio:navigated', () => {
+        configure();
+        animatePageIntro();
+        queueProgress();
     });
 
     document.addEventListener('portfolio:filtered', event => {

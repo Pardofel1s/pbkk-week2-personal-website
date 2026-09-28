@@ -130,6 +130,9 @@ html::-webkit-scrollbar-thumb:hover {
 .music-inline-artist i { color: var(--coral-dark); font-style: normal; }
 .music-inline-progress { display: block; width: min(100%, 188px); height: 2px; margin-top: .24rem; overflow: hidden; border-radius: 999px; background: color-mix(in srgb, var(--muted) 25%, transparent); }
 .music-inline-progress > span { display: block; width: 100%; height: 100%; border-radius: inherit; background: var(--coral-dark); transform: scaleX(0); transform-origin: left center; transition: transform .14s linear; }
+.page-navigation-pending::after { position: fixed; z-index: 1000; inset: 0 auto auto 0; width: 34vw; height: 2px; background: linear-gradient(90deg, transparent, var(--coral-dark), var(--sage-dark), transparent); content: ''; pointer-events: none; animation: page-route-progress 1s cubic-bezier(.4,0,.2,1) infinite; }
+@keyframes page-route-progress { from { transform: translateX(-110%); } to { transform: translateX(330vw); } }
+@media (prefers-reduced-motion: reduce) { .page-navigation-pending::after { width: 100vw; transform: none; animation: none; } }
 .music-popover { width: min(365px, calc(100vw - 2rem)); padding: 1.05rem; border: 1px solid color-mix(in srgb, var(--coral-dark) 24%, var(--line)); border-radius: 5px 22px 22px 22px; background: linear-gradient(145deg, color-mix(in srgb, var(--panel) 97%, transparent), color-mix(in srgb, var(--peach) 24%, var(--panel))); box-shadow: 0 24px 60px #44271d30, inset 0 1px #fff7; backdrop-filter: blur(20px); }
 .music-popover[hidden] { display: none; }
 .music-popover:not([hidden]) { animation: music-popover-in .34s cubic-bezier(.2,.8,.25,1) both; transform-origin: top left; }
