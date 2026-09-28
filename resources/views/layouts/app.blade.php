@@ -27,20 +27,49 @@
 <div class="site-frame">
     <header class="site-header">
         <div class="brand-player" data-music-player>
-            <button class="brand" type="button" aria-label="Buka lagu pilihan (K)" aria-expanded="false" aria-controls="music-popover"><span class="brand-monogram" aria-hidden="true">{{ $profile['brand'] }}</span><span class="brand-soundmark" aria-hidden="true">♫</span></button>
-            <div class="music-inline" aria-label="Lagu pilihan di YouTube Music">
+            <button class="brand" type="button" aria-label="Buka pemutar lagu pilihan (K)" aria-expanded="false" aria-controls="music-popover"><span class="brand-monogram" aria-hidden="true">{{ $profile['brand'] }}</span><span class="brand-soundmark" aria-hidden="true">♫</span></button>
+            <div class="music-inline" aria-label="Lagu pilihan">
                 <span class="music-inline-title">Everything Goes On</span>
                 <span class="music-inline-artist">Porter Robinson <i aria-hidden="true">·</i> League of Legends</span>
-                <a class="music-inline-link" href="https://music.youtube.com/watch?v=z5Dd7Lz-YHI" target="_blank" rel="noopener noreferrer">Listen on YouTube Music <span aria-hidden="true">↗</span></a>
+                <span class="music-inline-progress" aria-hidden="true"><span data-music-inline-progress></span></span>
             </div>
             <div class="music-popover" id="music-popover" hidden>
                 <div class="music-popover-top">
-                    <a class="music-art" href="https://music.youtube.com/watch?v=z5Dd7Lz-YHI" target="_blank" rel="noopener noreferrer" aria-label="Buka Everything Goes On di YouTube Music"><span>Everything<br>goes on</span><i>✳</i></a>
-                    <div class="music-meta"><span>A SONG I KEEP CLOSE · K.</span><strong>Everything Goes On</strong><span>Porter Robinson · League of Legends</span></div>
+                    <div class="music-art" aria-hidden="true"><span>Everything<br>goes on</span><i>✳</i></div>
+                    <div class="music-meta"><span>LISTENING ROOM · 01</span><strong>Everything Goes On</strong><span>Porter Robinson · League of Legends</span></div>
                 </div>
-                <p class="music-note">A song to keep close while you wander around.</p>
-                <div class="music-actions"><a class="music-listen" href="https://music.youtube.com/watch?v=z5Dd7Lz-YHI" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">▶</span> Listen in YouTube Music <span aria-hidden="true">↗</span></a><a href="{{ route('home') }}">Back to Home <span aria-hidden="true">↗</span></a></div>
-                <p class="music-footnote"><span>Opens in YouTube Music · 3:28</span><span>K to toggle · Esc to close</span></p>
+                <p class="music-note">Satu lagu untuk menemani halaman-halaman kecil ini.</p>
+                <div class="music-transport" aria-label="Kontrol lagu">
+                    <button class="music-play-toggle" type="button" data-music-toggle disabled aria-label="Kontrol pemutar sedang dimuat" aria-pressed="false">
+                        <span data-music-play-icon aria-hidden="true">▶</span>
+                    </button>
+                    <div class="music-timeline">
+                        <label class="sr-only" for="music-seek">Posisi lagu</label>
+                        <input id="music-seek" class="music-seek" type="range" min="0" max="1000" value="0" step="1" data-music-seek disabled>
+                        <div class="music-time"><span data-music-current>0:00</span><span data-music-duration>—:—</span></div>
+                    </div>
+                </div>
+                <div class="music-widget-wrap" data-music-widget-wrap>
+                    <iframe
+                        class="music-widget"
+                        title="Pemutar resmi Everything Goes On dari SoundCloud"
+                        data-music-widget
+                        id="soundcloud-player"
+                        data-src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fleagueoflegends%2Feverything-goes-on-porter-robinson&color=%23d98c73&auto_play=false&hide_related=true&show_comments=false&show_reposts=false&show_teaser=false&visual=false"
+                        width="100%"
+                        height="166"
+                        scrolling="no"
+                        frameborder="no"
+                        allow="autoplay"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        loading="lazy"></iframe>
+                </div>
+                <div class="music-actions">
+                    <a href="https://soundcloud.com/leagueoflegends/everything-goes-on-porter-robinson" target="_blank" rel="noopener noreferrer">Rilis resmi <span aria-hidden="true">↗</span></a>
+                    <a href="{{ route('home') }}">Kembali ke Home <span aria-hidden="true">↗</span></a>
+                </div>
+                <p class="music-footnote" data-music-status role="status" aria-live="polite">Buka panel, lalu tekan tombol putar untuk mulai mendengarkan.</p>
+                <p class="music-footnote">K untuk buka kontrol · Esc untuk menutup panel tanpa menghentikan musik</p>
             </div>
         </div>
         <span class="header-rule" aria-hidden="true"></span>

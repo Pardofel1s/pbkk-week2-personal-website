@@ -76,9 +76,11 @@ Unggah tautan repository publik ke LMS paling lambat H-1 jadwal perkuliahan ming
 
 ## Tampilan dan navigasi
 
-Mode terang/gelap tersedia dari tombol di header. Pilihan disimpan di browser; kunjungan pertama mengikuti tema perangkat. Tampilan memakai konsep personal field journal: tumpukan surat interaktif di Home, halaman proyek berbentuk studi editorial, koleksi seperti rak spesimen, blog sebagai indeks catatan, dan kalkulator sebagai lembar kerja dua panel.
+Mode terang/gelap tersedia dari tombol di header. Pilihan disimpan di browser; kunjungan pertama mengikuti tema perangkat. Tampilan memakai konsep personal field journal: tumpukan surat interaktif di Home, halaman proyek berbentuk studi editorial, koleksi seperti rak spesimen, blog sebagai indeks catatan, dan kalkulator sebagai lembar kerja dua panel. Tombol K membuka pemutar SoundCloud resmi untuk *Everything Goes On*. Tombol putar dan progress bar di panel memakai Widget API SoundCloud; waveform native tetap tersedia sebagai cadangan. Musik mulai setelah pengunjung menekan putar, tetap berjalan saat panel ditutup, dan pemutar baru dimuat saat pertama kali dibuka.
 
 Animasi mengikuti aksi pengguna dan kemunculan konten, bukan loop dekoratif. Pembaca surat memakai native dialog dan mendukung Escape serta tombol panah. Cursor desktop meninggalkan guratan tinta kecil pada mode terang dan glint hangat pada mode gelap; efek dimatikan pada layar sentuh dan preferensi reduced motion. Catatan referensi dan keputusan desain tersedia di [`docs/design/UI_REDESIGN.md`](docs/design/UI_REDESIGN.md).
+
+Studi visual tambahan mencatat **2.108 listing portofolio Awwwards** sebagai katalog indeks, lalu meninjau langsung sampel bertingkat 24 entri: 15 dapat dinilai secara visual, dua hanya termuat sebagian, dan empat tidak tersedia pada browser pemeriksaan. Angka katalog bukan klaim bahwa 2.108 situs semuanya dibuka. Metode, hasil, dan keterbatasannya ada di [`docs/research/portfolio-live-review.md`](docs/research/portfolio-live-review.md).
 
 ## Kesesuaian Tugas 4
 

@@ -130,8 +130,9 @@ official platform documentation before changing either interaction.
 | [W3C WAI G128](https://www.w3.org/WAI/WCAG21/Techniques/general/G128) | A navigation component should identify the current location in a way that matches displayed content. | Set `aria-current="location"` and reinforce it with both number and text styling. |
 | [Nielsen Norman Group: In-Page Links](https://www.nngroup.com/articles/in-page-links/) | Anchors save time on long pages; sticky in-page links should mark the current section and must not cover the target heading. | Keep the index separate from the main site nav, show the active chapter, and preserve a clear view of the destination. |
 | [MDN: Intersection Observer](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) | Browser-managed intersection observation avoids the repeated scroll-handler work historically used to track visibility. | Continue using `IntersectionObserver` for active-chapter updates instead of a per-scroll layout loop. |
-| [YouTube IFrame API](https://developers.google.com/youtube/iframe_api_reference) | The documented controllable embedded player is a YouTube video player; it provides playback events and seek methods. | Do not label an embedded YouTube video as native YouTube Music playback. |
-| [YouTube Help: Embed videos and playlists](https://support.google.com/youtube/answer/171780?hl=en) | YouTube documents embedding YouTube videos/playlists, including referrer requirements and privacy-enhanced mode. | Link the requested song directly to YouTube Music and avoid a broken/blank iframe in the site's player. |
+| [SoundCloud Widget API](https://developers.soundcloud.com/docs/api/html5-widget) | The official embedded widget plays tracks, displays a waveform, and exposes transport/progress controls. | Embed the official release inside the site so visitors can play and seek without leaving the page. |
+| [SoundCloud embed help](https://help.soundcloud.com/hc/en-us/articles/115003453587-Embedding-a-track-or-playlist) | SoundCloud supports track embeds and distinguishes embedding from downloadable files. | Stream the publisher's track; do not copy an all-rights-reserved recording into the repository. |
+| [Everything Goes On — League of Legends](https://soundcloud.com/leagueoflegends/everything-goes-on-porter-robinson) | The label's SoundCloud post credits Porter Robinson and links to official listening services; the track is marked all-rights-reserved. | Attribute the performers and keep a link to the source release as a fallback. |
 
 ### Navigation decision
 
@@ -144,20 +145,23 @@ current chapter name and nearby numeric destinations, preserving room for
 reading. Native scrolling stays intact, and the active section is exposed via
 `aria-current="location"`.
 
-### YouTube Music decision
+### In-page soundtrack decision
 
-There is no official YouTube Music playback API in the supported Google
-developer documentation reviewed for this iteration. The documented IFrame
-API controls YouTube video embeds, not the YouTube Music web app. The K control
-therefore opens the song directly in YouTube Music, with a matching title,
-artist, concise note, and a clear external action. It no longer displays a
-pretend progress bar or a YouTube video embed as though that were native
-YouTube Music playback. The K button and the `K` keyboard shortcut open the
-same compact choice panel; `Escape` closes it.
+The previous `K` panel only linked to YouTube Music, so it could not act as
+background audio on the website. It now opens an official SoundCloud widget
+for the League of Legends release. The iframe and Widget API load only after
+the panel opens. A compact play/pause button and seek bar use SoundCloud's
+official API; the embedded waveform controls remain available as a fallback if
+the API is unavailable. Closing the panel leaves playback running. Visitors
+still start the track with an explicit click, as browsers restrict unsolicited
+audio.
 
-Sources: [YouTube IFrame Player API](https://developers.google.com/youtube/iframe_api_reference),
-[YouTube's embedding guide](https://support.google.com/youtube/answer/171780?hl=en),
-[official track page and YouTube Music destination](https://soundcloud.com/leagueoflegends/everything-goes-on-porter-robinson).
+The song is streamed by SoundCloud rather than copied into the repository. The
+release page credits Porter Robinson and labels the recording all-rights-
+reserved, so local redistribution would need separate permission. The panel
+keeps a direct official-release link as a fallback if the embed is unavailable.
+The `K` key opens/closes the panel, `Escape` closes it, and the existing Home
+link remains next to the in-page player.
 
 ## Motion rules
 
