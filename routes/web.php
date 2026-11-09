@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AcademicController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,10 @@ Route::prefix('dashboard')->name('dashboard.')->controller(AcademicController::c
     Route::get('/agent/{tema?}', 'agent')->name('agent');
     Route::get('/ipk', 'gpaForm')->name('gpa');
     Route::get('/ipk/submit', 'submit')->name('gpa.submit');
+});
+
+Route::middleware(['auth', 'verified', 'role:admin|staf'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
 require __DIR__.'/auth.php';

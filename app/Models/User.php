@@ -33,6 +33,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function homeUrl(): string
     {
-        return route('home');
+        return route($this->hasAnyRole(['admin', 'staf']) ? 'admin.dashboard' : 'home');
     }
 }
