@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AcademicController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\MahasiswaController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +36,7 @@ Route::prefix('dashboard')->name('dashboard.')->controller(AcademicController::c
 
 Route::middleware(['auth', 'verified', 'role:admin|staf'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('mahasiswa', MahasiswaController::class)->except('show');
 });
 
 require __DIR__.'/auth.php';
