@@ -17,6 +17,15 @@ class AuthenticationTest extends TestCase
         $response->assertStatus(200);
     }
 
+    public function test_demo_login_buttons_render_only_in_local(): void
+    {
+        $this->get('/login')->assertDontSee('data-demo-login', false);
+
+        $this->app['env'] = 'local';
+
+        $this->get('/login')->assertSee('data-demo-login', false);
+    }
+
     public function test_users_can_authenticate_using_the_login_screen(): void
     {
         $user = User::factory()->create();
