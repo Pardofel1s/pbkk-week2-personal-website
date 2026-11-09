@@ -1,6 +1,67 @@
-# PBKK Week 4 — Blade Templating & Vite
+# PBKK Week 10 — Admin Dashboard & RBAC
 
 NRP: **5025241153** · S1 Teknik Informatika ITS
+
+Portal akademik dengan panel admin AdminLTE, login Laravel Breeze, dan hak akses Spatie Laravel Permission di dalam website portofolio yang sudah ada.
+
+![Beranda dashboard admin](docs/screenshots/dashboard-admin.png)
+
+## Instalasi
+
+PHP 8.3+, Composer, dan Node.js diperlukan. Jalankan dari folder proyek:
+
+```powershell
+composer install
+npm install
+Copy-Item .env.example .env
+php artisan key:generate
+New-Item database/database.sqlite
+php artisan migrate --seed
+npm run build
+php artisan serve --port=8002
+```
+
+Login di http://127.0.0.1:8002/login. Seeder membuat peran, izin, 3 akun demo, 5 departemen, 60 mahasiswa, 20 dosen, dan 30 tugas dengan Faker.
+
+## Akun uji (Auto-Login Credentials)
+
+Saat `APP_ENV=local`, halaman login menampilkan tombol login instan untuk ketiga akun ini. Semua password: `password`.
+
+| Peran | Email | Akses |
+| --- | --- | --- |
+| Admin | `admin@portal.test` | Penuh, termasuk hapus data |
+| Staf | `staf@portal.test` | Lihat, tambah, dan edit data |
+| Pengguna biasa | `user@portal.test` | Tanpa peran: diarahkan ke beranda, `/admin/*` membalas 403 |
+
+## Pemenuhan tugas
+
+| Spesifikasi | Implementasi |
+| --- | --- |
+| UI backoffice | Semua halaman admin memakai `@extends('adminlte::page')`; sidebar di `config/adminlte.php` |
+| Autentikasi | Controller dan route Breeze (`routes/auth.php`) dengan view AdminLTE; grup admin memakai `auth` dan `verified` |
+| Otorisasi database | Tabel Spatie, `RoleAndPermissionSeeder`, trait `HasRoles` pada `User` |
+| Widget | 3 small box dari kueri `count()` di `Admin\DashboardController` |
+| Pengaman controller | `Admin\MahasiswaController` memakai `HasMiddleware` dengan `permission:` untuk setiap aksi |
+| Hapus eksklusif Admin | Tombol dibungkus `@can('hapus-mahasiswa')`; DELETE langsung oleh Staf membalas 403 |
+| Pencarian dan filter | `when()` untuk nama/NRP, departemen, dan status; `withQueryString()` menjaga filter saat pindah halaman |
+
+Laravel 11+ tidak lagi menyediakan `$this->middleware()` pada base controller, sehingga constructor middleware dari slide ditulis dengan `HasMiddleware`, padanan resminya.
+
+Verifikasi:
+
+```powershell
+php artisan test
+php vendor/bin/pint --preset psr12 --test app/Http/Controllers/Admin app/Http/Controllers/Auth app/Models/Mahasiswa.php app/Models/Dosen.php app/Models/Tugas.php app/Models/Departemen.php tests/Feature/MahasiswaTest.php
+```
+
+## Demo maksimal 3 menit (Pertemuan 11)
+
+1. Di `/login`, klik **Masuk sebagai Admin**: redirect ke `/admin/dashboard` dan tunjukkan 3 widget.
+2. Buka **Mahasiswa**, cari nama, pilih departemen dan status, pindah ke halaman 2: filter tetap ada di URL. Hapus satu data.
+3. Logout, klik **Masuk sebagai Staf**: tombol Hapus tidak ada. Tunjukkan `MahasiswaController::middleware()`.
+4. Logout, klik **Masuk sebagai Pengguna Biasa**: diarahkan ke beranda, dan `/admin/dashboard` membalas 403.
+
+## Arsip Week 4: Blade Templating & Vite
 
 Mini-website akademik individu berbasis Laravel untuk Tugas 4 PBKK. Website ini memuat profil akademik, rancangan Agentic AI, serta formulir masukan. Implementasinya mempraktikkan Blade templating, master layout, reusable components, passing data dari controller, serta bundling Tailwind melalui Vite.
 
