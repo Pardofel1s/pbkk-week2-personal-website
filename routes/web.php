@@ -31,4 +31,7 @@ Route::prefix('dashboard')->name('dashboard.')->controller(AcademicController::c
     Route::get('/ipk', 'gpaForm')->name('gpa');
     Route::get('/ipk/submit', 'submit')->name('gpa.submit');
 });
+
+require __DIR__.'/auth.php';
+
 Route::fallback([AcademicController::class, 'missing'])->name('fallback');
